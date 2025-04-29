@@ -8,7 +8,9 @@
 
 <div id="add-package-form" style="display: none;">
   <h3>Add New Package</h3>
-  <form id="packageForm" method="post" action="actions/add_package.php">
+
+  <form id="packageForm" action="actions/add_package.php" method="POST" enctype="multipart/form-data">
+
     <div>
       <label for="title">Title:</label>
       <input type="text" id="title" name="title" required>
@@ -38,6 +40,10 @@
       <input type="number" id="total_slots" name="total_slots" required>
     </div>
     <div>
+      <label for="image">Package Image:</label>
+      <input type="file" name="image" accept="image/*" required>
+    </div>
+    <div>
       <label for="available_slots">Available Slots:</label>
       <input type="number" id="available_slots" name="available_slots" required>
     </div>
@@ -45,6 +51,8 @@
       <button type="submit">Save Package</button>
       <button type="button" id="cancel-add">Cancel</button>
     </div>
+
+
   </form>
 </div>
 

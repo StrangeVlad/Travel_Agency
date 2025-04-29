@@ -16,4 +16,12 @@ function check_admin_login()
     header("Location: login.php");
     exit;
   }
+} // Function to check if user is admin (returns true/false)
+function isAdmin()
+{
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
+
+  return (isset($_SESSION['role']) && $_SESSION['role'] === 'admin');
 }

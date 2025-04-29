@@ -1,5 +1,8 @@
 <?php include 'includes/header.php'; ?>
 
+<head>
+  <link rel="stylesheet" href="../assets/css/admin-style.css">
+</head>
 <h2>Hotel Management</h2>
 
 <div class="action-buttons">

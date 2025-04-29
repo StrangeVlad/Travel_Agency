@@ -1,0 +1,99 @@
+/* ================================
+   Header & Navigation
+   ================================ */
+header {
+  background-color: var(--color-white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-md);
+}
+header .logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--space-lg);
+  margin: 0;
+  padding: 0;
+}
+header nav ul li {
+  position: relative;
+}
+header nav ul li a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: var(--text-weight);
+  padding: var(--space-sm) var(--space-md);
+  transition: background 0.2s, color 0.2s;
+  border-radius: var(--radius-sm);
+}
+header nav ul li a:hover,
+header nav ul li a.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Mobile menu toggle */
+@media (max-width: 768px) {
+  header nav {
+    flex-wrap: wrap;
+  }
+  header nav ul {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+  }
+  header nav ul.open {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--color-text);
+  }
+}
+
+/* ================================
+   Main Content Padding
+   ================================ */
+main {
+  padding-top: calc(var(--space-lg) + 60px); /* account for sticky header */
+}
+
+/* ================================
+   Footer
+   ================================ */
+footer {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  text-align: center;
+  padding: var(--space-md);
+  font-size: 0.9rem;
+  margin-top: var(--space-xl);
+}
+footer p {
+  margin: 0;
+}
+
+/* ================================
+   Utility: Clearfix
+   ================================ */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
