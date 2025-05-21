@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Travel Packages</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 500px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #333;
+      }
+
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+
+      select,
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .btn {
+        background: #28a745;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        margin-top: 15px;
+        width: 100%;
+        border-radius: 5px;
+      }
+
+      .btn:hover {
+        background: #1e7e34;
+      }
+
+      .result {
+        margin-top: 20px;
+        padding: 15px;
+        background: #e3f2fd;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .back-to-top-btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #28a745; /* Same blue as other buttons */
+        text-decoration: none;
+        border-radius: 30px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-top: 2rem;
+        position: absolute;
+        right: 70px; /* Moves it to the left side */
+        top: 1500px; /* Adjust as needed */
+      }
+
+      .back-to-top-btn:hover {
+        background-color: #1e7e34;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Customize Your Travel Package</h2>
+
+      <!-- Display error messages if any -->
+      <div
+        id="errorMessages"
+        style="color: red; margin-bottom: 15px; display: none"
+      ></div>
+
+      <form action="travel_package.php" method="POST" id="travelForm">
+        <!-- Full Name -->
+        <label for="fullname">Full Name:</label>
+        <div style="display: flex; gap: 10px">
+          <input
+            type="text"
+            name="fullname"
+            id="fullname"
+            placeholder="First and Last Name"
+            required
+          />
+        </div>
+
+        <!-- Passport Information -->
+        <label for="passport">Passport Number:</label>
+        <input
+          type="text"
+          name="passport"
+          id="passport"
+          placeholder="Enter your passport number"
+          required
+        />
+
+        <label for="expire">Passport Expiry Date:</label>
+        <input type="date" name="expire" id="expire" required />
+
+        <!-- Date of Birth -->
+        <label for="birthdate">Date of Birth:</label>
+        <input type="date" name="birthdate" id="birthdate" required />
+
+        <!-- Address & City -->
+        <label for="address">Address:</label>
+        <input
+          type="text"
+          name="address"
+          id="address"
+          placeholder="Enter your address"
+          required
+        />
+
+        <!-- Contact Information -->
+        <label for="phone">Phone:</label>
+        <input
+          type="tel"
+          name="phone"
+          id="phone"
+          placeholder="Enter your phone number"
+          required
+        />
+
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        />
+
+        <!-- Gender -->
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="">--Select Gender--</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+
+        <!-- Destination -->
+        <label for="destination">Select Your Dream Destination:</label>
+        <input
+          type="text"
+          name="destination"
+          id="destination"
+          placeholder="Enter any city you want"
+          required
+        />
+
+        <!-- Travel Dates -->
+        <label for="departDate">Departure Date:</label>
+        <input type="date" name="departDate" id="departDate" required />
+
+        <label for="returnDate">Return Date:</label>
+        <input type="date" name="returnDate" id="returnDate" required />
+
+        <!-- Preferences -->
+        <label for="activities">Preferred Activities:</label>
+        <input
+          type="text"
+          name="activities"
+          id="activities"
+          placeholder="e.g., Adventure, Relaxation"
+          required
+        />
+
+        <label for="transport">Preferred Mode of Transport:</label>
+        <select id="transport" name="transport" required>
+          <option value="">--Select Transport--</option>
+          <option value="plane">Plane</option>
+          <option value="train">Train</option>
+          <option value="cruise">Cruise</option>
+        </select>
+
+        <label for="flightClass">Flight Class:</label>
+        <select id="flightClass" name="flightClass" required>
+          <option value="">--Select Class--</option>
+          <option value="Economy">Economy</option>
+          <option value="Business">Business</option>
+          <option value="First">First</option>
+        </select>
+
+        <label for="hotel">Hotel Name & Location:</label>
+        <input
+          type="text"
+          id="hotel"
+          name="hotel"
+          placeholder="Enter hotel name and location"
+          required
+        />
+
+        <label for="roomType">Room Type:</label>
+        <select id="roomType" name="roomType" required>
+          <option value="">--Select Room--</option>
+          <option value="Single">Single</option>
+          <option value="Double">Double</option>
+          <option value="Suite">Suite</option>
+        </select>
+
+        <label for="meal">Meal Preference:</label>
+        <select id="meal" name="meal" required>
+          <option value="">--Select Meal--</option>
+          <option value="Vegetarian">Vegetarian</option>
+          <option value="Halal">Halal</option>
+          <option value="Non-Vegetarian">Non-Vegetarian</option>
+        </select>
+
+        <label for="visa">Visa Assistance:</label>
+        <select id="visa" name="visa" required>
+          <option value="">--Select Option--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+
+        <label for="guide">Tour Guide Service:</label>
+        <select id="guide" name="guide" required>
+          <option value="">--Select Option--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+
+        <!-- Adult Companion -->
+        <label>Are you traveling with an adult companion?</label>
+        <div style="display: flex; gap: 10px">
+          <input
+            type="radio"
+            id="adultYes"
+            name="adult"
+            value="Yes"
+            onclick="toggleAdultFields(true)"
+          />
+          <label for="adultYes">Yes</label>
+
+          <input
+            type="radio"
+            id="adultNo"
+            name="adult"
+            value="No"
+            onclick="toggleAdultFields(false)"
+            checked
+          />
+          <label for="adultNo">No</label>
+        </div>
+
+        <div
+          id="adultInfo"
+          style="
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+          "
+        >
+          <label>Adult's Full Name:</label>
+          <div style="display: flex; gap: 10px">
+            <input
+              type="text"
+              id="adultLastName"
+              name="adultLastName"
+              placeholder="Last Name"
+            />
+            <input
+              type="text"
+              id="adultFirstName"
+              name="adultFirstName"
+              placeholder="First Name"
+            />
+          </div>
+          <label for="adultPassport">Adult's Passport Number:</label>
+          <input
+            type="text"
+            id="adultPassport"
+            name="adultPassport"
+            placeholder="Enter passport number"
+          />
+
+          <label for="adultExpire">Passport Expiry Date:</label>
+          <input type="date" id="adultExpire" name="adultExpire" />
+        </div>
+
+        <!-- Children -->
+        <label>Do you have children?</label>
+        <div style="display: flex; gap: 10px">
+          <input
+            type="radio"
+            id="childYes"
+            name="child"
+            value="Yes"
+            onclick="toggleChildFields(true)"
+          />
+          <label for="childYes">Yes</label>
+
+          <input
+            type="radio"
+            id="childNo"
+            name="child"
+            value="No"
+            onclick="toggleChildFields(false)"
+            checked
+          />
+          <label for="childNo">No</label>
+        </div>
+
+        <div
+          id="childInfo"
+          style="
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            background: #e3f2fd;
+            border-radius: 8px;
+          "
+        >
+          <label>Child's Full Name:</label>
+          <div style="display: flex; gap: 10px">
+            <input
+              type="text"
+              id="childLastName"
+              name="childLastName"
+              placeholder="Last Name"
+            />
+            <input
+              type="text"
+              id="childFirstName"
+              name="childFirstName"
+              placeholder="First Name"
+            />
+          </div>
+          <label for="childPassport">Child's Passport Number:</label>
+          <input
+            type="text"
+            id="childPassport"
+            name="childPassport"
+            placeholder="Enter passport number"
+          />
+
+          <label for="childExpire">Passport Expiry Date:</label>
+          <input type="date" id="childExpire" name="childExpire" />
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+      </form>
+
+      <script>
+        // Check for session error messages on page load
+        document.addEventListener("DOMContentLoaded", function () {
+          // Get URL parameters
+          const urlParams = new URLSearchParams(window.location.search);
+          const hasErrors = urlParams.get("error");
+          const errorMsg = urlParams.get("message");
+
+          if (hasErrors && errorMsg) {
+            const errorDiv = document.getElementById("errorMessages");
+            errorDiv.innerHTML = decodeURIComponent(errorMsg);
+            errorDiv.style.display = "block";
+          }
+        });
+
+        // Add validation for return date being after departure date
+        document
+          .getElementById("returnDate")
+          .addEventListener("change", function () {
+            const departDate = new Date(
+              document.getElementById("departDate").value
+            );
+            const returnDate = new Date(this.value);
+
+            if (returnDate <= departDate) {
+              alert("Return date must be after departure date");
+              this.value = "";
+            }
+          });
+
+        // Add validation for passport expiry being in the future
+        document
+          .getElementById("expire")
+          .addEventListener("change", function () {
+            const today = new Date();
+            const expireDate = new Date(this.value);
+
+            if (expireDate <= today) {
+              alert("Passport expiry date must be in the future");
+              this.value = "";
+            }
+          });
+
+        // Add validation for departure date being in the future
+        document
+          .getElementById("departDate")
+          .addEventListener("change", function () {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Set to beginning of day for fair comparison
+            const departDate = new Date(this.value);
+
+            if (departDate < today) {
+              alert("Departure date must be in the future");
+              this.value = "";
+            }
+          });
+
+        // Function to toggle adult companion fields
+        function toggleAdultFields(show) {
+          const adultInfo = document.getElementById("adultInfo");
+          adultInfo.style.display = show ? "block" : "none";
+
+          // Make fields required only when visible
+          const adultFields = [
+            "adultLastName",
+            "adultFirstName",
+            "adultPassport",
+            "adultExpire",
+          ];
+          adultFields.forEach((field) => {
+            const element = document.getElementById(field);
+            if (show) {
+              element.setAttribute("required", "");
+            } else {
+              element.removeAttribute("required");
+              element.value = ""; // Clear values when hidden
+            }
+          });
+        }
+
+        // Function to toggle child fields
+        function toggleChildFields(show) {
+          const childInfo = document.getElementById("childInfo");
+          childInfo.style.display = show ? "block" : "none";
+
+          // Make fields required only when visible
+          const childFields = [
+            "childLastName",
+            "childFirstName",
+            "childPassport",
+            "childExpire",
+          ];
+          childFields.forEach((field) => {
+            const element = document.getElementById(field);
+            if (show) {
+              element.setAttribute("required", "");
+            } else {
+              element.removeAttribute("required");
+              element.value = ""; // Clear values when hidden
+            }
+          });
+        }
+      </script>
+      <div class="result" id="result"></div>
+      <div><a href="destination.php" class="back-to-top-btn">Back</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+      // Function to generate and download PDF
+      function generateAndDownloadPDF(event) {
+        // Prevent default form submission
+        event.preventDefault();
+
+        // Make sure jsPDF is available
+        if (
+          typeof window.jspdf === "undefined" ||
+          typeof window.jspdf.jsPDF === "undefined"
+        ) {
+          console.error("PDF generation library not loaded");
+
+          // Submit the form normally if PDF generation fails
+          document.getElementById("travelForm").submit();
+          return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Getting form values
+        const fullname = document.getElementById("fullname").value;
+        const passport = document.getElementById("passport").value;
+        const expire = document.getElementById("expire").value;
+        const birthdate = document.getElementById("birthdate").value;
+        const address = document.getElementById("address").value;
+        const phone = document.getElementById("phone").value;
+        const email = document.getElementById("email").value;
+        const gender = document.getElementById("gender").value;
+        const destination = document.getElementById("destination").value;
+        const departDate = document.getElementById("departDate").value;
+        const returnDate = document.getElementById("returnDate").value;
+        const activities = document.getElementById("activities").value;
+        const transport = document.getElementById("transport").value;
+        const flightClass = document.getElementById("flightClass").value;
+        const hotel = document.getElementById("hotel").value;
+        const roomType = document.getElementById("roomType").value;
+        const meal = document.getElementById("meal").value;
+        const visa = document.getElementById("visa").value;
+        const guide = document.getElementById("guide").value;
+
+        // Set up the PDF with title and header
+        doc.setFontSize(18);
+        doc.text("Custom Travel Package Request", 20, 20);
+
+        // Add Logo Image - Make sure the image path is correct
+        try {
+          const img = new Image();
+          img.src = "Photo/logo.png.jpg";
+
+          img.onload = function () {
+            // Add the logo to the PDF
+            doc.addImage(img, "PNG", 10, 10, 40, 20);
+
+            // Continue with the rest of the PDF generation
+            finalizePDF();
+          };
+
+          img.onerror = function () {
+            console.warn(
+              "Logo image could not be loaded. Continuing without the logo."
+            );
+            finalizePDF();
+          };
+        } catch (error) {
+          console.warn("Error loading logo image:", error);
+          finalizePDF();
+        }
+
+        function finalizePDF() {
+          // Add the date and time
+          const now = new Date();
+          const formattedDate = now.toLocaleDateString();
+          const formattedTime = now.toLocaleTimeString();
+
+          doc.setLineWidth(0.5);
+          doc.line(10, 30, 200, 30); // Horizontal line under the header
+
+          // Format date and time
+          doc.setFontSize(12);
+          doc.setFont("helvetica", "italic");
+          doc.text(`Date: ${formattedDate}`, 10, 35);
+          doc.text(`Time: ${formattedTime}`, 150, 35);
+
+          // Add form details to PDF
+          const details = [
+            { label: "Full Name", value: fullname },
+            { label: "Passport Number", value: passport },
+            { label: "Passport Expiry Date", value: expire },
+            { label: "Date of Birth", value: birthdate },
+            { label: "Address", value: address },
+            { label: "Phone", value: phone },
+            { label: "Email", value: email },
+            { label: "Gender", value: gender },
+            { label: "Destination", value: destination },
+            { label: "Departure Date", value: departDate },
+            { label: "Return Date", value: returnDate },
+            { label: "Preferred Activities", value: activities },
+            { label: "Transport Mode", value: transport },
+            { label: "Flight Class", value: flightClass },
+            { label: "Hotel", value: hotel },
+            { label: "Room Type", value: roomType },
+            { label: "Meal Preference", value: meal },
+            { label: "Visa Assistance", value: visa },
+            { label: "Tour Guide Service", value: guide },
+          ];
+
+          let yOffset = 45;
+          // Add details to PDF with proper spacing
+          details.forEach((detail) => {
+            // Check if we need to start a new page
+            if (yOffset > 280) {
+              doc.addPage();
+              yOffset = 20;
+            }
+            doc.text(`${detail.label}: ${detail.value}`, 10, yOffset);
+            yOffset += 10;
+          });
+
+          // Check for adult companion info
+          if (document.getElementById("adultYes").checked) {
+            // Collect adult companion data
+            const adultFirstName =
+              document.getElementById("adultFirstName").value;
+            const adultLastName =
+              document.getElementById("adultLastName").value;
+            const adultPassport =
+              document.getElementById("adultPassport").value;
+            const adultExpire = document.getElementById("adultExpire").value;
+
+            // Check if we need to start a new page
+            if (yOffset > 250) {
+              doc.addPage();
+              yOffset = 20;
+            }
+
+            // Add adult companion info to PDF if filled out
+            if (
+              adultFirstName ||
+              adultLastName ||
+              adultPassport ||
+              adultExpire
+            ) {
+              doc.setFont("helvetica", "bold");
+              doc.text("Adult Companion Information:", 10, yOffset);
+              yOffset += 10;
+
+              doc.setFont("helvetica", "normal");
+              if (adultFirstName || adultLastName) {
+                doc.text(
+                  `Full Name: ${adultLastName} ${adultFirstName}`,
+                  10,
+                  yOffset
+                );
+                yOffset += 10;
+              }
+
+              if (adultPassport) {
+                doc.text(`Passport Number: ${adultPassport}`, 10, yOffset);
+                yOffset += 10;
+              }
+
+              if (adultExpire) {
+                doc.text(`Passport Expiry Date: ${adultExpire}`, 10, yOffset);
+                yOffset += 10;
+              }
+            }
+          }
+
+          // Check for children info
+          if (document.getElementById("childYes").checked) {
+            // Collect child data
+            const childFirstName =
+              document.getElementById("childFirstName").value;
+            const childLastName =
+              document.getElementById("childLastName").value;
+            const childPassport =
+              document.getElementById("childPassport").value;
+            const childExpire = document.getElementById("childExpire").value;
+
+            // Check if we need to start a new page
+            if (yOffset > 250) {
+              doc.addPage();
+              yOffset = 20;
+            }
+
+            // Add child info to PDF if filled out
+            if (
+              childFirstName ||
+              childLastName ||
+              childPassport ||
+              childExpire
+            ) {
+              doc.setFont("helvetica", "bold");
+              doc.text("Child Information:", 10, yOffset);
+              yOffset += 10;
+
+              doc.setFont("helvetica", "normal");
+              if (childFirstName || childLastName) {
+                doc.text(
+                  `Full Name: ${childLastName} ${childFirstName}`,
+                  10,
+                  yOffset
+                );
+                yOffset += 10;
+              }
+
+              if (childPassport) {
+                doc.text(`Passport Number: ${childPassport}`, 10, yOffset);
+                yOffset += 10;
+              }
+
+              if (childExpire) {
+                doc.text(`Passport Expiry Date: ${childExpire}`, 10, yOffset);
+                yOffset += 10;
+              }
+            }
+          }
+
+          // Add footer with note
+          doc.setFont("helvetica", "italic");
+          doc.text(
+            "Thank you for choosing our travel services!",
+            10,
+            yOffset + 10
+          );
+          doc.text(
+            "Your travel package request has been submitted.",
+            10,
+            yOffset + 20
+          );
+
+          // Save the PDF
+          doc.save("Travel_Package_Request.pdf");
+
+          // Submit the form after generating PDF
+          document.getElementById("travelForm").submit();
+        }
+      }
+
+      // Add event listener to the form
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", generateAndDownloadPDF);
+      });
+    </script>
+  </body>
+</html>

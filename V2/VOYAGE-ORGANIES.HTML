@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOYAGE-ORGANIES</title>
+    <style>
+    * {
+        box-sizing: border-box;
+      }
+  
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f4f4f4;
+      }
+.navbar {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4f10c4;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #82bbe9;
+}
+        /* 🔹 شريط الصور المتحرك */
+        .slider-container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            height: 300px;
+        }
+
+        .slides {
+            display: flex;
+            width: 30%;
+            transition: transform 1s ease-in-out;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* 🔹 صندوق السعر داخل الشريط */
+        .price-box {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+/* 🔹 تصميم قسم الرحلات */
+.destinations {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .destination {
+        width: 30%;
+        background: white;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 30%;
+        text-align: left;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .destination:hover {
+        transform: scale(1.05);
+    }
+
+    .destination img {
+        width: 100%;
+        height: 180px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    .destination h3 {
+        font-size: 18px;
+        color: #333;
+        margin-top: 10px;
+    }
+
+    .price {
+        color: #FF8000; /* لون السعر البرتقالي */
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .details {
+        font-size: 14px;
+        color: #555;
+        margin-top: 5px;
+    }
+
+    .details ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .details ul li {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    /* 🔹 تصميم النافذة المنبثقة (Modal) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal.show {
+    display: flex;  /* ✅ عند ظهور النافذة، يتم عرضها */
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    width: 50%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+button.open-modal {
+    background-color: #FF8000;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.open-modal:hover {
+    background-color: #e67300;
+}
+.modal-content h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.modal-content iframe {
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 🔹 زر الإغلاق بشكل أنيق */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #777;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ff4d4d;
+}
+/* 🔹 تحسين مظهر العناوين الفرعية */
+.modal-content h3 {
+    font-size: 18px;
+    color: #444;
+    margin-top: 15px;
+    text-align: left;
+}
+
+/* 🔹 تحسين موقع Google Maps */
+.modal-content iframe:last-of-type {
+    height: 300px;
+    margin-top: 10px;
+}
+.container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            color: #007BFF;
+        }
+        .section p {
+            color: #555;
+            line-height: 1.6;
+        }
+        .contact {
+            text-align: center;
+            padding: 20px;
+            background: #007BFF;
+            color: white;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .contact a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .contact-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact-form input, .contact-form button {
+            width: 80%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .contact-form button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background: #0056b3;
+        }
+           /* Section Styling */
+           .section {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 6px solid #007BFF;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        ul {
+            padding-left: 20px;
+            list-style: none;
+        }
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            background: #007BFF;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .contact a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact-form input, .contact-form button {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .contact-form button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .contact-form button:hover {
+            background: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="agence.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>           
+        </ul>
+     </nav>  
+    <h2> VOYAGE ORGANIES</h2>
+
+    <!-- 🔹 شريط الصور المتحرك -->
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide">
+                <img src="Photo/Instabul Turkey Travel Print.jpg" alt="الوجهة 1">
+                <div class="price-box">Price:140,000.00 DA</div>
+            </div>
+            <div class="slide">
+                <img src="Photo/paris.jpg" alt="الوجهة 2">
+                <div class="price-box">Price: 129,000.00 DA</div>
+            </div>
+            <div class="slide">
+                <img src="Photo/Barcelone.jpg" alt="الوجهة 3">
+                <div class="price-box">Price: 99,000.00</div>
+            </div>
+        </div>
+    </div>
+
+<!-- Updated Destination Section -->
+<div class="destinations">
+    <!-- Destination 1: Paris -->
+    <div class="destination">
+        <img src="Photo/paris.jpg" alt="Paris">
+        <h3>Trip to Paris</h3>
+        <p class="price">129,000.00 DA</p>
+        <p class="offer-duration">📅 Offer valid until: 30 April 2025</p>
+        <div class="details">
+            <ul>
+                <li>✈️ Round-trip flight ticket</li>
+                <li>🏨 Accommodation in a 4-star hotel</li>
+                <li>🍽️ Breakfast and dinner included</li>
+                <li>🏰 City sightseeing tours</li>
+            </ul>
+        </div>
+        <button class="open-modal" data-modal="paris-modal">More Info</button>
+    </div>
+
+    <!-- Destination 2: Barcelona -->
+    <div class="destination">
+        <img src="Photo/Barcelone.jpg" alt="Barcelona">
+        <h3>Trip to Barcelona</h3>
+        <p class="price">99,000.00 DA</p>
+        <p class="offer-duration">📅 Offer valid for 7 days only!</p>
+        <div class="details">
+            <ul>
+                <li>✈️ Round-trip flight ticket</li>
+                <li>🏨 Accommodation in a 4-star hotel</li>
+                <li>🍽️ Breakfast and dinner included</li>
+                <li>🌊 Visits to beaches and museums</li>
+            </ul>
+        </div>
+        <button class="open-modal" data-modal="barcelona-modal">More Info</button>
+    </div>
+
+    <!-- Destination 3: Istanbul -->
+    <div class="destination">
+        <img src="Photo/Instabul Turkey Travel Print2.jpg" alt="Istanbul">
+        <h3>Trip to Istanbul</h3>
+        <p class="price">140,000.00 DA</p>
+        <p class="offer-duration">📅 Limited seats –before: 25 April 2025</p>
+        <div class="details">
+            <ul>
+                <li>✈️ Round-trip flight ticket</li>
+                <li>🏨 Accommodation in a 5-star hotel</li>
+                <li>🚢 Bosphorus boat tour</li>
+                <li>🕌 Visit historical landmarks</li>
+            </ul>
+        </div>
+        <button class="open-modal" data-modal="istanbul-modal">More Info</button>
+    </div>
+</div>
+
+<!-- 🔹 Modal for Paris -->
+<div class="modal" id="paris-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="container">
+            <h2>🇫🇷 Paris Travel Package</h2>
+
+    <div class="section">
+        <h3>✈️ Flights</h3>
+        <p><strong>Airlines:</strong> Air Algérie (direct flights), Air France, Lufthansa, Turkish Airlines.</p>
+        <p><strong>Airports:</strong> Arrival: Charles de Gaulle (CDG) or Orly (ORY). Departure: Algiers (Houari Boumediene), Oran (Ahmed Ben Bella).</p>
+        <p><strong>Flight Schedule:</strong> Morning and evening options available to suit your itinerary.</p>
+        <p><strong>Included Services:</strong> Round-trip tickets, baggage allowance, in-flight meals, and entertainment.</p>
+    </div>
+
+    <div class="section">
+        <h3>🏨 4-Star Hotel Accommodation</h3>
+        <p><strong>Hotel Locations:</strong> Centrally located in Paris, near the Latin Quarter, Opera, or the Seine River.</p>
+        <p><strong>Facilities:</strong> Well-equipped rooms, free Wi-Fi, restaurant, 24/7 reception, gym/spa (in some hotels).</p>
+        <p><strong>Extra Services:</strong> Daily housekeeping, luggage storage.</p>
+    </div>
+
+    <div class="section">
+        <h3>🍽️ Meals</h3>
+        <p><strong>Breakfast:</strong> Buffet breakfast with French pastries, cheese, coffee, and fresh juices.</p>
+        <p><strong>Dinner:</strong> Traditional French and international meals in selected restaurants.</p>
+    </div>
+
+    <div class="section">
+        <h3>🏛 Sightseeing & Tours</h3>
+        <p><strong>📅 Day 1: Arrival & Welcome</strong></p>
+        <ul>
+            <li>Arrival in Paris, transfer to hotel.</li>
+            <li>Free time for exploration.</li>
+            <li>Dinner at a local restaurant.</li>
+        </ul>
+
+        <p><strong>🏗 Day 2: Paris Landmarks</strong></p>
+        <ul>
+            <li>Eiffel Tower visit (option to go to the top).</li>
+            <li>Seine River cruise.</li>
+            <li>Notre-Dame Cathedral (if open for visitors).</li>
+            <li>Arc de Triomphe & Champs-Élysées.</li>
+        </ul>
+
+        <p><strong>🎨 Day 3: Art & Culture</strong></p>
+        <ul>
+            <li>Louvre Museum guided tour.</li>
+            <li>Orsay Museum (Impressionist art).</li>
+            <li>Montmartre & Sacré-Cœur Basilica.</li>
+            <li>Dinner in Montmartre.</li>
+        </ul>
+
+        <p><strong>🏰 Day 4: Gardens & Palaces</strong></p>
+        <ul>
+            <li>Versailles Palace & Gardens.</li>
+            <li>Luxembourg Gardens.</li>
+            <li>Free time for shopping.</li>
+        </ul>
+
+        <p><strong>🏙 Day 5: Modern Paris</strong></p>
+        <ul>
+            <li>Centre Pompidou.</li>
+            <li>Les Halles district.</li>
+            <li>Free exploration & luxury dinner.</li>
+        </ul>
+
+        <p><strong>🚖 Day 6: Departure</strong></p>
+        <ul>
+            <li>Free time for last-minute visits.</li>
+            <li>Airport transfer for departure.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>🚍 Additional Services</h3>
+        <p><strong>Tour Guide:</strong> English, French, or Arabic-speaking guide throughout the trip.</p>
+        <p><strong>Transportation:</strong> Airport transfers, coach transport, public transport tickets.</p>
+        <p><strong>Insurance:</strong> Travel insurance included.</p>
+        <p><strong>Entry Tickets:</strong> Included for all mentioned attractions.</p>
+    </div>
+
+    <div class="contact">
+        <h3>📞 Contact Us</h3>
+        <p>Need more details? Call us at <a href="tel:+123456789">+123 456 789</a></p>
+    </div>
+
+    <div class="contact-form">
+        <h3>📩 Request More Information</h3>
+        <form action="save_contact.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="date" name="delivery_date" placeholder="Delivery Date" required>
+            <input type="date" name="expiration_date" placeholder="Expiration Date" required>
+            <input type="hidden" name="destination" value="Paris">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+
+        </div>
+        <p>Enjoy a wonderful trip to Paris including a visit to the Eiffel Tower, museums, and luxury restaurants.</p>
+        <iframe width="400" height="350" src="https://www.youtube.com/embed/REDVbTQxMXo?si=C9h7HfgIuHNyKSAD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <h3>Location:</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.77816036488!2d2.264632683728936!3d48.858938485486036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sen!2sdz!4v1741560052409!5m2!1sen!2sdz" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    </div>
+</div>
+
+<!-- 🔹 Modal for Barcelona -->
+<div class="modal" id="barcelona-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="container">
+            <h2>🏝️ Barcelona Travel Package</h2>
+
+            <div class="section">
+                <h3>✈️ Round-trip Flight Ticket</h3>
+                <p><strong>Airlines:</strong> Options include Air Algérie, Iberia, Vueling, and Ryanair, selected based on price, schedule, and service quality.</p>
+                <p><strong>Departure Cities:</strong> Flights available from Algiers, Oran, and Constantine, ensuring flexibility.</p>
+                <p><strong>Convenient Schedules:</strong> Morning and evening flights minimize layovers and fit your travel plans.</p>
+            </div>
+        
+            <div class="section">
+                <h3>🏨 4-Star Hotel Accommodation</h3>
+                <p><strong>Comfort & Affordability:</strong> Stay in spacious rooms with pools, restaurants, and fitness centers at reasonable prices.</p>
+                <p><strong>Prime Locations:</strong> Hotels near Las Ramblas, Sagrada Familia, and the Gothic Quarter for easy sightseeing.</p>
+                <p><strong>Included Services:</strong> Daily housekeeping, 24/7 reception, and free Wi-Fi.</p>
+            </div>
+        
+            <div class="section">
+                <h3>🍽️ Breakfast & Dinner Included</h3>
+                <p><strong>Delicious Meals:</strong> Enjoy a variety of Catalan, Spanish, and international dishes, with vegetarian options available.</p>
+                <p><strong>Cost Savings:</strong> Save money by having breakfast and dinner covered, allowing you to enjoy your trip worry-free.</p>
+            </div>
+        
+            <div class="section">
+                <h3>🌊 Beach & Museum Visits</h3>
+                <p><strong>🏖 Beaches:</strong></p>
+                <ul>
+                    <li><strong>Barceloneta Beach:</strong> Vibrant atmosphere with water sports, cafés, and golden sands.</li>
+                    <li><strong>Bogatell Beach:</strong> A quieter beach, ideal for relaxation and scenic views.</li>
+                </ul>
+                <p><strong>🏛 Museums:</strong></p>
+                <ul>
+                    <li><strong>Picasso Museum:</strong> Home to a vast collection of Picasso’s masterpieces.</li>
+                    <li><strong>Barcelona History Museum:</strong> Explore the city's rich history from Roman times to the present.</li>
+                    <li><strong>Camp Nou Museum:</strong> A must-visit for FC Barcelona fans, featuring trophies, memorabilia, and stadium tours.</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>📅 Daily Itinerary</h3>
+                <p><strong>🛬 Day 1: Arrival & Welcome</strong></p>
+                <ul>
+                    <li>Arrival in Barcelona and transfer to the hotel.</li>
+                    <li>Free time to explore Las Ramblas and nearby attractions.</li>
+                    <li>Welcome dinner at a local Spanish restaurant.</li>
+                </ul>
+
+                <p><strong>🏰 Day 2: Gaudí's Masterpieces</strong></p>
+                <ul>
+                    <li>Visit Sagrada Familia and Park Güell.</li>
+                    <li>Explore Casa Batlló and Casa Milà (La Pedrera).</li>
+                    <li>Dinner at a traditional Catalan restaurant.</li>
+                </ul>
+
+                <p><strong>🛍 Day 3: Shopping & Markets</strong></p>
+                <ul>
+                    <li>Visit the famous La Boqueria Market for local specialties.</li>
+                    <li>Explore the El Corte Inglés department store for souvenirs.</li>
+                    <li>Relaxing evening at the beach or in the Gothic Quarter for shopping.</li>
+                </ul>
+
+                <p><strong>🚢 Day 4: Museums & Beaches</strong></p>
+                <ul>
+                    <li>Morning visit to the Picasso Museum and Barcelona History Museum.</li>
+                    <li>Afternoon at Barceloneta Beach for sunbathing and relaxation.</li>
+                    <li>Enjoy dinner at a seaside restaurant with Mediterranean views.</li>
+                </ul>
+
+                <p><strong>🌆 Day 5: Exploring Montjuïc & Old Town</strong></p>
+                <ul>
+                    <li>Walk through the Gothic Quarter and visit the Barcelona Cathedral.</li>
+                    <li>Take the cable car up to Montjuïc for panoramic views of the city.</li>
+                    <li>Explore Montjuïc Castle and the Olympic Stadium.</li>
+                    <li>Evening free for leisure or additional sightseeing.</li>
+                </ul>
+
+                <p><strong>🏝 Day 6: Day Trip to Sitges</strong></p>
+                <ul>
+                    <li>Full-day excursion to the coastal town of Sitges.</li>
+                    <li>Relax on the beautiful beaches and explore the town’s historic center.</li>
+                    <li>Lunch at a seaside café and return to Barcelona in the evening.</li>
+                </ul>
+
+                <p><strong>✈️ Day 7: Departure</strong></p>
+                <ul>
+                    <li>Free time for last-minute shopping or sightseeing.</li>
+                    <li>Transfer to the airport for your departure flight.</li>
+                </ul>
+            </div>
+
+            <p>Explore the beautiful city of Barcelona with its stunning beaches and Gaudi's architecture.</p>
+            <iframe width="100%" height="250" src="https://www.youtube.com/embed/y3G5q7yz5Jg" frameborder="0" allowfullscreen></iframe>
+            <h3>Location:</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191560.83606778193!2d1.9753763105530873!3d41.39280795292641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816718e30e5%3A0x44b0fb3d4f47660a!2sBarcelona%2C%20Spain!5e0!3m2!1sen!2sdz!4v1741560003819!5m2!1sen!2sdz" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+           
+            <div class="contact">
+                <h3>📞 Contact Us</h3>
+                <p>Need more details? Call us at <a href="tel:+123456789">+123 456 789</a></p>
+            </div>
+        
+            <div class="contact-form">
+                <h3>📩 Request More Information</h3>
+                <form action="save_contact.php" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="date" name="delivery_date" placeholder="Delivery Date" required>
+                <input type="date" name="expiration_date" placeholder="Expiration Date" required>
+                <input type="hidden" name="destination" value="Barcelona">
+                <button type="submit">Submit</button>
+            </form>
+            </div>
+            
+        </div>
+     
+    </div>
+</div>
+
+<!-- 🔹 Modal for Istanbul -->
+<div class="modal" id="istanbul-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+            <div class="container">
+                <h2>🇹🇷 Istanbul Travel Package</h2>
+            
+                <div class="section">
+                    <h3>✈️ Flights</h3>
+                    <p><strong>Round-trip flights to Istanbul</strong></p>
+                    <p><strong>Airlines:</strong> Turkish Airlines, Air Algérie, Pegasus Airlines.</p>
+                    <p><strong>Arrival Airports:</strong> Istanbul Airport (IST) or Sabiha Gökçen International Airport (SAW).</p>
+                    <p><strong>Departure Airports:</strong> Major airports in Algeria (Algiers, Oran, etc.).</p>
+                    <p><strong>Included Services:</strong> Baggage allowance, in-flight meals (depending on airline), onboard entertainment.</p>
+                </div>
+            
+                <div class="section">
+                    <h3>🏨 5-Star Hotel Accommodation</h3>
+                    <p><strong>Hotel Locations:</strong> Centrally located in Istanbul (Sultanahmet, Taksim, Beşiktaş).</p>
+                    <p><strong>Facilities:</strong> Luxury rooms, free Wi-Fi, Turkish & international restaurants, 24/7 reception, entertainment facilities (swimming pools, spa, etc.).</p>
+                    <p><strong>Extra Services:</strong> Daily housekeeping, luggage storage.</p>
+                </div>
+            
+                <div class="section">
+                    <h3>🚢 Bosphorus Tour</h3>
+                    <p><strong>Cruise on the Bosphorus Strait</strong></p>
+                    <ul>
+                        <li>View Ottoman palaces, fortresses, and bridges.</li>
+                        <li>Tour duration: 2-4 hours.</li>
+                        <li>May include meals or drinks.</li>
+                    </ul>
+                </div>
+            
+                <div class="section">
+                    <h3>🏛 Visit Historical Landmarks</h3>
+                    <ul>
+                        <li>Sultanahmet Mosque (Blue Mosque).</li>
+                        <li>Hagia Sophia.</li>
+                        <li>Topkapi Palace.</li>
+                        <li>Grand Bazaar & Basilica Cistern.</li>
+                        <li>Balat neighborhood.</li>
+                    </ul>
+                    <p>🧑‍🏫 Guided tours by professional tour guides.</p>
+                </div>
+            
+                <div class="section">
+                    <h3>🚍 Additional Services</h3>
+                    <p><strong>Tour Guide:</strong> Arabic, Turkish, or English-speaking guide throughout the trip.</p>
+                    <p><strong>Transportation:</strong> Airport transfers, transport between tourist attractions.</p>
+                    <p><strong>Public Transport:</strong> Tickets for trams, buses, and ferries.</p>
+                    <p><strong>Travel Insurance:</strong> Included.</p>
+                    <p><strong>Entry Tickets:</strong> Included for all mentioned attractions.</p>
+                </div>
+            
+                <div class="section">
+                    <h3>📅 Daily Itinerary</h3>
+            
+                    <p><strong>🛬 Day 1: Arrival & Welcome</strong></p>
+                    <ul>
+                        <li>Arrival in Istanbul, transfer to hotel.</li>
+                        <li>Free time for exploration.</li>
+                        <li>Welcome dinner.</li>
+                    </ul>
+            
+                    <p><strong>🏰 Day 2: Historical Istanbul</strong></p>
+                    <ul>
+                        <li>Visit Sultanahmet Mosque, Hagia Sophia, Topkapi Palace.</li>
+                        <li>Explore Basilica Cistern & Sultanahmet Square.</li>
+                        <li>Dinner with a Bosphorus view.</li>
+                    </ul>
+            
+                    <p><strong>🛍 Day 3: Shopping & Culture</strong></p>
+                    <ul>
+                        <li>Grand Bazaar & Spice Market.</li>
+                        <li>Pierre Loti Café for panoramic views.</li>
+                        <li>Traditional Turkish dinner.</li>
+                    </ul>
+            
+                    <p><strong>🚢 Day 4: Bosphorus & Palaces</strong></p>
+                    <ul>
+                        <li>Bosphorus cruise tour.</li>
+                        <li>Visit Dolmabahçe Palace & Ortaköy Mosque.</li>
+                        <li>Seafood dinner on the Bosphorus.</li>
+                    </ul>
+            
+                    <p><strong>🌆 Day 5: Modern Istanbul</strong></p>
+                    <ul>
+                        <li>Visit Taksim Square & Istiklal Street.</li>
+                        <li>Explore Galata Tower & Istanbul Modern Museum.</li>
+                        <li>Shopping in modern malls.</li>
+                        <li>International cuisine dinner.</li>
+                    </ul>
+            
+                    <p><strong>🏝 Day 6: Princes' Islands</strong></p>
+                    <ul>
+                        <li>Trip to Büyükada (largest of the Princes’ Islands).</li>
+                        <li>Horse carriage tour & relaxation.</li>
+                        <li>Seafood dinner on the island.</li>
+                    </ul>
+            
+                    <p><strong>✈️ Day 7: Departure</strong></p>
+                    <ul>
+                        <li>Free time for last-minute visits.</li>
+                        <li>Transfer to the airport.</li>
+                    </ul>
+                </div>
+
+                <p>Discover Istanbul’s historical sites, the Bosphorus cruise, and the Grand Bazaar.</p>
+                <iframe width="400" height="350" src="https://www.youtube.com/embed/k4vCGr7I3Lo?si=8cg6htq1VAtwcVsp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <h3>Location:</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385396.3211659784!2d28.68251797700929!3d41.00537019816265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVsLCBUw7xya2l5ZQ!5e0!3m2!1sen!2sdz!4v1741559748414!5m2!1sen!2sdz" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="contact">
+                    <h3>📞 Contact Us</h3>
+                    <p>Need more details? Call us at <a href="tel:+123456789">+123 456 789</a></p>
+                </div>
+            
+                <div class="contact-form">
+                    <h3>📩 Request More Information</h3>
+                 <form action="save_contact.php" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="date" name="delivery_date" placeholder="Delivery Date" required>
+                    <input type="date" name="expiration_date" placeholder="Expiration Date" required>
+                    <input type="hidden" name="destination" value="Istanbul">
+                    <button type="submit">Submit</button>
+                 </form>
+                </div>
+        </div>
+        
+</div>
+
+    <script>
+        let currentIndex = 0;
+        const slidesContainer = document.querySelector(".slides");
+        const totalSlides = document.querySelectorAll(".slide").length;
+        
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+        
+        // تغيير الصورة كل 30 ثانية (30000 ميلي ثانية)
+        setInterval(nextSlide, 3000);
+
+        document.querySelectorAll(".open-modal").forEach(button => {
+    button.addEventListener("click", function () {
+        let modalId = this.getAttribute("data-modal");
+        document.getElementById(modalId).classList.add("show");
+    });
+});
+
+// إغلاق النافذة عند الضغط على علامة ✖
+document.querySelectorAll(".close").forEach(closeBtn => {
+    closeBtn.addEventListener("click", function () {
+        this.closest(".modal").classList.remove("show");
+    });
+});
+
+// إغلاق النافذة عند الضغط خارجها
+window.addEventListener("click", function (event) {
+    document.querySelectorAll(".modal").forEach(modal => {
+        if (event.target === modal) {
+            modal.classList.remove("show");
+        }
+    });
+});
+
+
+    </script>
+
+</body>
+</html>

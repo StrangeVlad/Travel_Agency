@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f4f4;
+        }
+        .thank-you-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #007BFF;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .check-icon {
+            font-size: 50px;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="check-icon">✔️</div>
+        <h2>Thank You for Your Submission!</h2>
+        <p>Your custom travel package details have been saved.</p>
+    </div>
+    
+    <script>
+        function generateAndDownloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Load Logo
+            const img = new Image();
+            img.src = "Photo/logo.png.jpg"; // Change this to your agency's logo URL
+            img.onload = function () {
+                doc.addImage(img, "PNG", 10, 10, 40, 20); // Position and size of the logo
+
+                // Get current date and time
+                const now = new Date();
+                const formattedDate = now.toLocaleDateString(); // Date format (Day/Month/Year)
+                const formattedTime = now.toLocaleTimeString(); // Time format (HH:MM:SS)
+
+                // Set Title
+                doc.setFontSize(18);
+                doc.setFont("helvetica", "bold");
+                doc.text("Travel Agency - Booking Confirmation", 60, 20);
+
+                // Add a separator line
+                doc.setLineWidth(0.5);
+                doc.line(10, 30, 200, 30);
+
+                // Set Content
+                doc.setFontSize(12);
+                doc.setFont("helvetica", "normal");
+
+                const details = [
+                    { label: "Name", value: document.getElementById("fullname").value },
+                    { label: "Passport Number", value: document.getElementById("passport").value },
+                    { label: "Passport Expiry Date", value: document.getElementById("expire").value },
+                    { label: "Date of Birth", value: document.getElementById("birthdate").value },
+                    { label: "Address", value: document.getElementById("address").value },
+                    { label: "Phone", value: document.getElementById("phone").value },
+                    { label: "Email", value: document.getElementById("email").value },
+                    { label: "Gender", value: document.getElementById("gender").value },
+                    { label: "Destination", value: document.getElementById("destination").value },
+                    { label: "Departure Date", value: document.getElementById("departDate").value },
+                    { label: "Return Date", value: document.getElementById("returnDate").value },
+                    { label: "Preferred Activities", value: document.getElementById("activities").value },
+                    { label: "Preferred Transport", value: document.getElementById("transport").value },
+                    { label: "Flight Class", value: document.getElementById("flightClass").value },
+                    { label: "Hotel Name & Location", value: document.getElementById("hotel").value },
+                    { label: "Room Type", value: document.getElementById("roomType").value },
+                    { label: "Meal Preference", value: document.getElementById("meal").value },
+                    { label: "Estimated Budget", value: document.getElementById("budget").value },
+                    { label: "Visa Assistance", value: document.getElementById("visa").value },
+                    { label: "Tour Guide Service", value: document.getElementById("guide").value }
+                ];
+
+                // Add date and time
+                doc.setFontSize(12);
+                doc.setFont("helvetica", "italic");
+                doc.text(`Date: ${formattedDate}`, 10, 35);
+                doc.text(`Time: ${formattedTime}`, 150, 35);
+
+                let y = 40; // Start position for text
+                details.forEach((item) => {
+                    doc.setFont("helvetica", "bold");
+                    doc.text(item.label + ":", 10, y);
+                    doc.setFont("helvetica", "normal");
+                    doc.text(item.value || "Not provided", 70, y);
+                    y += 10;
+                });
+
+                // Save PDF
+                doc.save("Travel_Package_Details.pdf");
+
+                // Redirect to thank-you page
+                setTimeout(function () {
+                    window.location.href = "thank-you.html";
+                }, 2000);
+            };
+
+            // Handle the image load error
+            img.onerror = function () {
+                console.error("Image failed to load");
+            };
+        }
+
+        // Trigger the PDF generation when the page loads
+        window.onload = function() {
+            generateAndDownloadPDF();
+        };
+    </script>
+</body>
+</html>

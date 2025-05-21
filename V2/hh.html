@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Agence De Voyage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+/* Reset & Body */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #14213d;
+  padding: 15px 30px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+.nav-links a:hover {
+  color: #fca311;
+}
+
+/* Go to Destination Button */
+.go-to-destination {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.moving-button {
+  background-color: #fca311;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
+.moving-button:hover {
+  background-color: #ff8800;
+  transform: scale(1.05);
+}
+
+/* Services Section */
+.services {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.services h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+  color: #14213d;
+}
+.service-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+.service-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+}
+.service-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.service-card h3 {
+  font-size: 20px;
+  margin: 15px 0 10px;
+}
+.service-card p {
+  padding: 0 15px 15px;
+  font-size: 14px;
+  color: #555;
+}
+.service-card .btn {
+  display: inline-block;
+  margin: 10px auto 20px;
+  background-color: #2a9d8f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.service-card .btn:hover {
+  background-color: #21867a;
+}
+
+/* Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+.modal.show {
+  display: flex;
+}
+.modal-content {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideIn 0.4s ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+.modal-content h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #14213d;
+}
+.modal-content h2 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #2a9d8f;
+}
+.modal-content p,
+.modal-content li {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+}
+.modal-content ul {
+  margin-left: 20px;
+}
+.modal-content .close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  color: #888;
+  cursor: pointer;
+}
+.modal-content .close:hover {
+  color: #000;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideIn {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .service-card {
+    width: 90%;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+
+
+</style>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="agence.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="register.html">Contact</a></li>      
+        </ul> 
+     </nav>       
+     <div class="go-to-destination">
+        <a href="destination.html" class="moving-button">
+            <span>Go to Destination</span>
+        </a>
+    </div>
+<section class="services">
+    <h2>Our Services</h2>
+    <div class="service-container">
+        <div class="service-card">
+            <img src="Photo/Secret Tips To Getting The Lowest Price On Airfare - Penny Pinchin' Mom.jpg" alt="Flight Booking">
+            <h3>Flight Booking</h3>
+            <p>Book local and international flights easily with the best offers from top airlines.</p>
+            <a href="#" class="btn open-modal" data-modal="flight-modal">Learn More</a>
+        </div>
+        
+        <div class="service-card">
+            <img src="Photo/Iconos gratuitos de Alojamiento diseñados por setiawanap.jpg" alt="Hotel Reservations">
+            <h3>Hotel Reservations</h3>
+            <p>Find and book hotels that suit your style and budget, with free cancellation options.</p>
+            <a href="#" class="btn open-modal" data-modal="hotel-modal">Learn More</a>
+        </div>
+        
+        <div class="service-card">
+            <img src="Photo/Tour Vacation with Guide.jpg" alt="Guided Tours">
+            <h3>Guided Tours</h3>
+            <p>Explore famous destinations with expert-guided tours available in multiple languages.</p>
+            <a href="#" class="btn open-modal" data-modal="guided-modal">Learn More</a>
+        </div>
+        
+        <div class="service-card">
+            <img src="Photo/80fdfe5d-0807-435c-b083-1633b41a5ea3.jpg" alt="Transport Services">
+            <h3>Transport Services</h3>
+            <p>Book reliable transport services for local and international travel with ease.</p>
+            <a href="#" class="btn open-modal" data-modal="transport-modal">Learn More</a>
+        </div>
+        <div class="service-card">
+            <img src="Photo/food.jpg">
+            <h3>Food & Drinks</h3>
+            <p>Enjoy the best dining experiences with local and international cuisines.</p>
+            <a href="#" class="btn open-modal" data-modal="food-modal">Learn More</a>
+        </div>
+        <div class="service-card">
+            <img src="Photo/festest.jpg">
+            <h3>Fastest Travel</h3>
+            <p>Find the fastest and most comfortable travel options to save time and enjoy your journey.</p>
+            <a href="#" class="btn open-modal" data-modal="fastest-modal">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Modal for Flight Booking -->
+<div class="modal" id="flight-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Flight Booking</h1>
+        
+        <h2>📍 Airlines We Work With</h2>
+        <ul>
+            <li>✈️ Turkish Airlines</li>
+            <li>✈️ Air France</li>
+            <li>✈️ Algerian Airlines</li>
+            <li>✈️ and more....</li>
+        </ul>
+        <h2>🛫 Flight Options</h2>
+        <p>We offer various flight options to suit your travel needs:</p>
+        <ul>
+            <li>🔹 **Direct Flights** – Non-stop flights to your destination.</li>
+            <li>🔹 **Connecting Flights** – One or more layovers for cost-effective travel.</li>
+            <li>🔹 **One-Way & Round-Trip** – Choose flexible options for your journey.</li>
+            <li>🔹 **Multi-City Travel** – Book multiple stops in one trip.</li>
+        </ul>
+    
+        <h2>🎟️ Travel Classes</h2>
+        <ul>
+            <li>💺 **Economy Class** – Affordable fares with essential services.</li>
+            <li>🛋️ **Premium Economy** – Extra legroom and premium in-flight services.</li>
+            <li>🛏️ **Business Class** – Comfortable reclining seats and gourmet dining.</li>
+            <li>🏆 **First Class** – Luxury suites with personalized service.</li>
+        </ul>
+    
+        <h2>✔️ What’s Included?</h2>
+        <ul>
+            <li>✅ **Round-trip tickets**</li>
+            <li>✅ **Baggage allowance** (Depends on airline and class)</li>
+            <li>✅ **In-flight meals & entertainment**</li>
+            <li>✅ **Complimentary WiFi on select flights**</li>
+            <li>✅ **Priority boarding for premium class**</li>
+        </ul>
+    
+        <h2>📜 Booking Policies & Cancellation</h2>
+        <p>We offer flexible booking and cancellation policies:</p>
+        <ul>
+            <li>🔹 **24-hour free cancellation** for most airlines.</li>
+            <li>🔹 **Flexible date changes** for select fares.</li>
+            <li>🔹 **Refundable & non-refundable tickets** available.</li>
+            <li>🔹 **Travel insurance options** for added protection.</li>
+        </ul>
+    
+        <h2>📦 Extra Services</h2>
+        <ul>
+            <li>🛄 **Additional Baggage** – Purchase extra luggage space.</li>
+            <li>🚘 **Airport Transfers** – Book a ride to/from the airport.</li>
+            <li>🏨 **Hotel Packages** – Combine flight + hotel for discounts.</li>
+            <li>🍽️ **Special Meal Requests** – Vegan, Halal, Kosher, etc.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.open-modal').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const modalId = this.dataset.modal;
+        document.getElementById(modalId).classList.add('show');
+      });
+    });
+    document.querySelectorAll('.modal .close').forEach(btn => {
+      btn.addEventListener('click', function () {
+        this.closest('.modal').classList.remove('show');
+      });
+    });
+    window.addEventListener('click', function (e) {
+      if (e.target.classList.contains('modal')) {
+        e.target.classList.remove('show');
+      }
+    });
+    </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agence De Voyage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="Photo/logo.png.jpg" alt="Logo">
+    </div>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+  
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f4f4f4;
+      }
+        .header {
+            background-color: #0044cc;
+            padding: 1rem 0;
+            color: #fff;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .services {
+            padding: 4rem 0;
+            text-align: center;
+            margin: 0 auto;
+            
+        }
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .service-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .service-card {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card img {
+            width: 100px;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .service-card p {
+            padding: 0 15px 15px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #0044cc;
+            margin: 10px auto 20px;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #002a80;
+        }
+/* تصميم النافذة المنبثقة (Modal) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+.modal.show {
+    display: flex;  /* ✅ عند ظهور النافذة، يتم عرضها */
+    opacity: 1;
+    visibility: visible;
+}
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    width: 50%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+.footer {
+    text-align: center;
+    padding: 0.5rem 0;
+    background-color: #82bbe9;
+    color: white;
+    margin-top: 2rem;
+}
+
+/*  Close Button */
+.close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 50%;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+}
+/*  Typography */
+.modal-content h1 {
+    color: #0044cc;
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+.modal-content h2 {
+    color: #222;
+    font-size: 22px;
+    margin-top: 15px;
+    font-weight: 600;
+}
+.modal-content p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+}
+.modal-content ul {
+  margin-left: 20px;
+}
+/*  Button */
+.modal-content .btn {
+    display: inline-block;
+    background: #0044cc;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+}
+
+.modal-content .btn:hover {
+    background: #002a80;
+}
+
+/*  Animation Effects */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.go-to-destination {
+    text-align: right;
+    margin-bottom: 40px;
+}
+.moving-button {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    overflow: hidden;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+
+}
+.moving-button span {
+    display: inline-block;
+    white-space: nowrap;
+    animation: moveText 4s linear infinite;
+}
+@keyframes moveText {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+    </style>
+     <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="agence.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="register.html">Contact</a></li>      
+        </ul> 
+     </nav>       
+     <div class="go-to-destination">
+        <a href="destination.html" class="moving-button">
+            <span>Go to Destination</span>
+        </a>
+    </div>
+<section class="services">
+    <h2>Our Services</h2>
+    <div class="service-container">
+        <div class="service-card">
+            <img src="Photo/Secret Tips To Getting The Lowest Price On Airfare - Penny Pinchin' Mom.jpg" alt="Flight Booking">
+            <h3>Flight Booking</h3>
+            <p>Book local and international flights easily with the best offers from top airlines.</p>
+            <a href="#" class="btn open-modal" data-modal="flight-modal">Learn More</a>
+        </div>
+        
+        <div class="service-card">
+            <img src="Photo/Iconos gratuitos de Alojamiento diseñados por setiawanap.jpg" alt="Hotel Reservations">
+            <h3>Hotel Reservations</h3>
+            <p>Find and book hotels that suit your style and budget, with free cancellation options.</p>
+            <a href="#" class="btn open-modal" data-modal="hotel-modal">Learn More</a>
+        </div>
+        
+        <div class="service-card">
+            <img src="Photo/Tour Vacation with Guide.jpg" alt="Guided Tours">
+            <h3>Guided Tours</h3>
+            <p>Explore famous destinations with expert-guided tours available in multiple languages.</p>
+            <a href="#" class="btn open-modal" data-modal="guided-modal">Learn More</a>
+        </div>
+        
+        <div class="service-card">
+            <img src="Photo/80fdfe5d-0807-435c-b083-1633b41a5ea3.jpg" alt="Transport Services">
+            <h3>Transport Services</h3>
+            <p>Book reliable transport services for local and international travel with ease.</p>
+            <a href="#" class="btn open-modal" data-modal="transport-modal">Learn More</a>
+        </div>
+        <div class="service-card">
+            <img src="Photo/food.jpg" alt="Food & Drinks">
+            <h3>Food & Drinks</h3>
+            <p>Enjoy the best dining experiences with local and international cuisines.</p>
+            <a href="#" class="btn open-modal" data-modal="food-modal">Learn More</a>
+        </div>
+        <div class="service-card">
+            <img src="Photo/festest.jpg" alt="Fastest Travel">
+            <h3>Fastest Travel</h3>
+            <p>Find the fastest and most comfortable travel options to save time and enjoy your journey.</p>
+            <a href="#" class="btn open-modal" data-modal="fastest-modal">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Modal for Flight Booking -->
+<div class="modal" id="flight-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Flight Booking</h1>
+        
+        <h2>📍 Airlines We Work With</h2>
+        <ul>
+            <li>✈️ Turkish Airlines</li>
+            <li>✈️ Air France</li>
+            <li>✈️ Algerian Airlines</li>
+            <li>✈️ and more....</li>
+        </ul>
+        <h2>🛫 Flight Options</h2>
+        <p>We offer various flight options to suit your travel needs:</p>
+        <ul>
+            <li>🔹 **Direct Flights** – Non-stop flights to your destination.</li>
+            <li>🔹 **Connecting Flights** – One or more layovers for cost-effective travel.</li>
+            <li>🔹 **One-Way & Round-Trip** – Choose flexible options for your journey.</li>
+            <li>🔹 **Multi-City Travel** – Book multiple stops in one trip.</li>
+        </ul>
+    
+        <h2>🎟️ Travel Classes</h2>
+        <ul>
+            <li>💺 **Economy Class** – Affordable fares with essential services.</li>
+            <li>🛋️ **Premium Economy** – Extra legroom and premium in-flight services.</li>
+            <li>🛏️ **Business Class** – Comfortable reclining seats and gourmet dining.</li>
+            <li>🏆 **First Class** – Luxury suites with personalized service.</li>
+        </ul>
+    
+        <h2>✔️ What’s Included?</h2>
+        <ul>
+            <li>✅ **Round-trip tickets**</li>
+            <li>✅ **Baggage allowance** (Depends on airline and class)</li>
+            <li>✅ **In-flight meals & entertainment**</li>
+            <li>✅ **Complimentary WiFi on select flights**</li>
+            <li>✅ **Priority boarding for premium class**</li>
+        </ul>
+    
+        <h2>📜 Booking Policies & Cancellation</h2>
+        <p>We offer flexible booking and cancellation policies:</p>
+        <ul>
+            <li>🔹 **24-hour free cancellation** for most airlines.</li>
+            <li>🔹 **Flexible date changes** for select fares.</li>
+            <li>🔹 **Refundable & non-refundable tickets** available.</li>
+            <li>🔹 **Travel insurance options** for added protection.</li>
+        </ul>
+    
+        <h2>📦 Extra Services</h2>
+        <ul>
+            <li>🛄 **Additional Baggage** – Purchase extra luggage space.</li>
+            <li>🚘 **Airport Transfers** – Book a ride to/from the airport.</li>
+            <li>🏨 **Hotel Packages** – Combine flight + hotel for discounts.</li>
+            <li>🍽️ **Special Meal Requests** – Vegan, Halal, Kosher, etc.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Modal for Hotel Reservations -->
+<div class="modal" id="hotel-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Hotel Reservations</h1>
+        
+        <h2>🏨 Best Hotel Deals</h2>
+        <p>We offer exclusive discounts on top-rated hotels worldwide. Book with confidence and enjoy a comfortable stay.</p>
+
+        <h2>🌍 Top Destinations</h2>
+        <ul>
+            <li>Paris, France 🇫🇷</li>
+            <li>Dubai, UAE 🇦🇪</li>
+            <li>New York, USA 🇺🇸</li>
+            <li>Istanbul, Turkey 🇹🇷</li>
+            <li>Bangkok, Thailand 🇹🇭</li>
+        </ul>
+
+        <h2>✔️ What’s Included?</h2>
+        <ul>
+            <li>✅ Free breakfast in selected hotels</li>
+            <li>✅ Free WiFi & room service</li>
+            <li>✅ Flexible cancellation options</li>
+            <li>✅ Special honeymoon & family packages</li>
+        </ul>
+    </div>
+</div>
+<!-- Modal for Guided Tours -->
+<div class="modal" id="guided-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Guided Tours</h1>
+
+        <h2>🌍 Discover the World's Top Destinations</h2>
+        <p>Enjoy exclusive guided tours to historical, cultural, and scenic locations with expert guides.</p>
+
+        <h2>📍 Popular Destinations</h2>
+        <ul>
+            <li>🏛️ **Paris, France** – Louvre Museum & Eiffel Tower</li>
+            <li>🏔️ **Machu Picchu, Peru** – Inca ruins & scenic trails</li>
+            <li>🕌 **Istanbul, Turkey** – Hagia Sophia & Grand Bazaar</li>
+            <li>🏰 **London, UK** – Buckingham Palace & Tower of London</li>
+            <li>🗿 **Kyoto, Japan** – Ancient temples & cherry blossoms</li>
+        </ul>
+
+        <h2>🎧 Tour Features</h2>
+        <ul>
+            <li>✅ **Multi-language guides** – English, Spanish, French, Arabic & more</li>
+            <li>✅ **Small group & private tours** available</li>
+            <li>✅ **Skip-the-line access** for major attractions</li>
+            <li>✅ **Hotel pickup & drop-off** included in selected tours</li>
+        </ul>
+
+        <h2>📜 Booking & Cancellation</h2>
+        <p>We provide flexible booking and cancellation options:</p>
+        <ul>
+            <li>🔹 **Free cancellation** up to 24 hours before the tour</li>
+            <li>🔹 **Instant booking confirmation**</li>
+            <li>🔹 **Customizable private tours** for your group</li>
+        </ul>
+    </div>
+</div>
+<!-- Modal for Transport Services -->
+<div class="modal" id="transport-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Transport Services</h1>
+
+        <h2>🚗 Reliable Transport for Every Journey</h2>
+        <p>We offer a variety of transport options to ensure a seamless travel experience.</p>
+
+        <h2>🚍 Available Transport Options</h2>
+        <ul>
+            <li>🚖 **Private Taxis** – Comfortable, door-to-door service.</li>
+            <li>🚐 **Shuttle Services** – Shared rides for budget-friendly transport.</li>
+            <li>🚆 **Train Bookings** – High-speed rail options for local and international routes.</li>
+            <li>🚌 **Bus Services** – Long-distance and city bus tickets.</li>
+            <li>🚘 **Car Rentals** – Rent a car with or without a driver.</li>
+            <li>🛵 **Scooter & Bike Rentals** – Convenient for short city trips.</li>
+        </ul>
+
+        <h2>📍 Destinations Covered</h2>
+        <p>We provide transport services in multiple locations worldwide, including:</p>
+        <ul>
+            <li>🌆 **City Transfers** – Airport, hotel, and business district pickups.</li>
+            <li>🌍 **Intercity Travel** – Comfortable rides between major cities.</li>
+            <li>✈️ **Airport Transfers** – Private & shared transport from the airport to your destination.</li>
+        </ul>
+
+        <h2>🎟️ Booking & Pricing</h2>
+        <ul>
+            <li>✅ **Instant confirmation** on all bookings.</li>
+            <li>✅ **Flexible cancellation** up to 24 hours before departure.</li>
+            <li>✅ **Affordable pricing** with no hidden fees.</li>
+        </ul>
+
+        <h2>✔️ Additional Services</h2>
+        <ul>
+            <li>🛄 **Luggage Assistance** – Extra help with baggage handling.</li>
+            <li>👨‍👩‍👧‍👦 **Family & Group Transport** – Spacious vehicles available.</li>
+            <li>🚀 **VIP & Luxury Transfers** – Executive cars & limousines.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Modal for Food & Drinks -->
+<div class="modal" id="food-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Food & Drinks</h1>
+
+        <h2>🍽️ Culinary Delights from Around the World</h2>
+        <p>Experience the finest dining, from traditional local dishes to international gourmet cuisine.</p>
+
+        <h2>🌍 Dining Options</h2>
+        <ul>
+            <li>🍔 **Local Street Food** – Taste authentic flavors from street vendors.</li>
+            <li>🍣 **Fine Dining Restaurants** – Enjoy gourmet meals in top-rated restaurants.</li>
+            <li>🥗 **Vegetarian & Vegan Cafés** – Healthy plant-based options for all diets.</li>
+            <li>🍜 **Asian, Mediterranean, & More** – A variety of cuisines to explore.</li>
+        </ul>
+
+        <h2>☕ Drink & Beverage Selections</h2>
+        <ul>
+            <li>☕ **Coffee & Tea** – Premium brews from around the world.</li>
+            <li>🍹 **Cocktails & Mocktails** – Refreshing drinks made by expert bartenders.</li>
+            <li>🥤 **Fresh Juices & Smoothies** – Healthy and refreshing drinks.</li>
+        </ul>
+
+        <h2>📍 Locations & Special Offers</h2>
+        <p>Discover the best places to eat and drink in your travel destination.</p>
+        <ul>
+            <li>📍 **Airport Lounges** – Relax and enjoy premium meals before your flight.</li>
+            <li>🏨 **Hotel Dining** – Experience five-star dining at your hotel.</li>
+            <li>🌴 **Beachfront Restaurants** – Dine with a stunning ocean view.</li>
+        </ul>
+
+        <h2>🎟️ Booking & Reservations</h2>
+        <ul>
+            <li>✅ **Easy online reservations** for top restaurants.</li>
+            <li>✅ **Exclusive discounts** on selected dining experiences.</li>
+            <li>✅ **Private dining & catering** for special events.</li>
+        </ul>
+
+        <h2>✔️ Special Services</h2>
+        <ul>
+            <li>🍽️ **Chef’s Table Experiences** – Meet top chefs and enjoy custom menus.</li>
+            <li>🥡 **Food Delivery Services** – Get your favorite meals delivered to your hotel.</li>
+        </ul>
+    </div>
+</div>
+<!-- Modal for Fastest Travel -->
+<div class="modal" id="fastest-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Fastest Travel</h1>
+
+        <h2>🚀 Quick & Efficient Travel Options</h2>
+        <p>Save time and reach your destination faster with premium travel options designed for speed and comfort.</p>
+
+        <h2>✈️ Flight Services</h2>
+        <ul>
+            <li>🔹 **Direct Flights** – Non-stop flights to save travel time.</li>
+            <li>🔹 **Priority Boarding** – Skip the queues and board first.</li>
+            <li>🔹 **Private Jet Services** – Fly at your convenience with no delays.</li>
+        </ul>
+
+        <h2>🚄 High-Speed Trains</h2>
+        <ul>
+            <li>🚅 **Bullet Trains** – Reach destinations at speeds of 300+ km/h.</li>
+            <li>🚉 **Express Train Services** – Fast and comfortable travel within cities and regions.</li>
+        </ul>
+
+        <h2>🚗 Private & Luxury Transfers</h2>
+        <ul>
+            <li>🚖 **Premium Car Rentals** – Travel in luxury and comfort.</li>
+            <li>🛵 **Motorbike & Scooter Rentals** – Fast navigation in busy cities.</li>
+            <li>🚁 **Helicopter Transfers** – Fly directly to your destination.</li>
+        </ul>
+
+        <h2>📜 Booking & Reservation</h2>
+        <ul>
+            <li>✅ **Instant online booking** for flights, trains, and rentals.</li>
+            <li>✅ **Flexible date changes** for select travel options.</li>
+            <li>✅ **Exclusive VIP services** for a seamless experience.</li>
+        </ul>
+
+        <h2>📦 Additional Services</h2>
+        <ul>
+            <li>🎟️ **Fast-Track Security & Immigration** – No waiting in lines.</li>
+            <li>🏨 **Hotel Express Check-in** – Get to your room faster.</li>
+            <li>📡 **24/7 Travel Assistance** – Real-time updates and support.</li>
+        </ul>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2025 Agence De Voyage. All Rights Reserved.</p>
+    <p>Contact us: <a href="mailto:info@agencedevoyage.com">info@agencedevoyage.com</a></p>
+</footer>
+
+
+<script>
+    document.querySelectorAll('.open-modal').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const modalId = this.dataset.modal;
+        document.getElementById(modalId).classList.add('show');
+      });
+    });
+    document.querySelectorAll('.modal .close').forEach(btn => {
+      btn.addEventListener('click', function () {
+        this.closest('.modal').classList.remove('show');
+      });
+    });
+    window.addEventListener('click', function (e) {
+      if (e.target.classList.contains('modal')) {
+        e.target.classList.remove('show');
+      }
+    });
+    </script>
+    
+    
+    
+</body>
+</html>

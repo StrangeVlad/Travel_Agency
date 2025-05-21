@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agence De Voyage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+    * {
+        box-sizing: border-box;
+      }
+  
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f4f4f4;
+      }
+ /* Services section */
+#services {
+    background-color: #f8f9fa; /* Light background for better readability */
+    padding: 6rem 2rem; /* Increased padding for a spacious layout */
+    text-align: center; /* Centered text alignment */
+    border-top: 3px solid #007BFF; /* Top border for visual emphasis */
+}
+
+#services h2 {
+    font-size: 2.5rem;
+    color: #007BFF; /* Primary blue color */
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
+/* Flexbox layout for service cards */
+.service-items {
+    display: flex;
+    justify-content: center; /* Center all items */
+    flex-wrap: wrap;
+    gap: 2rem; /* Space between items */
+}
+/* Individual service item/card */
+.service-item {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);  /* Light gradient background */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    padding: 2.5rem; /* Extra padding for balance */
+    text-align: center;
+    flex: 1 1 calc(30% - 2rem); /* 3 items per row layout */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
+/* Hover effect for service card */
+.service-item:hover {
+    transform: translateY(-10px); /* Lift on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+/* Service card title */
+.service-item h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+/* Service card description */
+.service-item p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+/* Service card button styling */
+.service-item .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007BFF;
+    text-decoration: none;
+    border-radius: 30px; /* Rounded button */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Button hover effects */
+}
+
+.service-item .btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly larger button on hover */
+}
+/* Service image styling */
+.service-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #007BFF; /* Accent color for images */
+}
+/* ================National and International sections============= */
+.national, .International {
+    background-color: #f8f9fa; /* Light background for consistency */
+    padding: 6rem 2rem; /* Spacious padding */
+    text-align: center;
+    border-top: 3px solid #007BFF; /* Section separator */
+}
+/* Section headings */
+.national h1, .International h1 {
+    font-size: 2.5rem;
+    color: #007BFF;
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
+/* Layout for destination cards */
+.destination-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem; /* Spacing between cards */
+}
+/* Individual destination card */
+.destination-card {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Subtle gradient for depth */
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    overflow: hidden;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+/* Destination image */
+.destination-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #007BFF; /* Accent color for images */
+}
+
+.destination-card h3 {
+    font-size: 1.8rem;
+    color: #007BFF;
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+.destination-card p {
+    padding: 0 1rem 1.5rem;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* ===============Custom section============== */
+.Custom {
+    background-color: #fff; /* White background for a clean look */
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 3px solid #007BFF;
+}
+
+.Custom h1 {
+    font-size: 2.5rem;
+    color: #007BFF;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.Custom p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+  /* ====Back to Top Button Styles==== */
+.back-to-top-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007BFF; /* Same blue as other buttons */
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 2rem; /* Add some space above the button */
+}
+ .back-to-top-btn:hover {
+background-color: #0056b3;
+ transform: scale(1.05);
+ }
+ /* ===================== Carousel Section ===================== */
+
+ .city-details {
+      padding: 40px 20px;
+      background-color: #f8f9fa;
+    }
+
+    .city-details h2 {
+      text-align: center;
+      font-size: 2.2em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .city-details p {
+      text-align: center;
+      font-size: 1.1em;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 1200px;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s ease-in-out;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 20px;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      width: 250px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      font-size: 1.1em;
+      margin: 15px 0 5px;
+      color: #2c3e50;
+    }
+
+    .card p {
+      color: #888;
+      font-size: 0.95em;
+      margin-bottom: 10px;
+    }
+
+    .card button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-bottom: 15px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .card button:hover {
+      background-color: #0056b3;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      background: #ffffffcc;
+      border: none;
+      padding: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .carousel-btn:hover {
+      background: #fff;
+    }
+
+    .carousel-btn.prev {
+      left: -10px;
+    }
+
+    .carousel-btn.next {
+      right: -10px;
+    }
+
+    .back-to-top-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-to-top-btn:hover {
+      background-color: #1e7e34;
+    }
+
+    @media (max-width: 768px) {
+      .carousel {
+        gap: 10px;
+      }
+
+      .card {
+        width: 200px;
+      }
+
+      .carousel-btn {
+        display: none;
+      }
+    }
+/* ===================== Popup Window ===================== */
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow-y: auto;
+}
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh; /* تحديد الحد الأقصى للارتفاع */
+    overflow-y: auto; /* السماح بالتمرير إذا تجاوز المحتوى الحجم */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+
+}
+.close-btn {
+    float: right;
+    cursor: pointer;
+}
+/* Confirmation Message */
+.confirmation-container {
+    text-align: center;
+    margin-top: 50px;
+}
+/* ===================== Form Styles ===================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input Fields */
+input, select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 100%;
+}
+/* Confirm Button */
+.btn-confirm {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-confirm:hover {
+    background: #0056b3;
+}
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/* ===================== Footer ===================== */
+.footer {
+    background-color: #a2a8df;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    margin-top: 2rem;
+    z-index: 1;
+}
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    padding: 20px;
+}
+
+/* Popup Content Box */
+.popup-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    overflow-y: auto;
+    max-height: 95vh;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Form Styles */
+form label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+/* Confirm Button */
+.btn-confirm {
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-confirm:hover {
+    background-color: #218838;
+}
+/* Hotel Gallery */
+.hotel-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: flex;
+}
+
+.hotel-gallery img {
+    max-width: 120px;
+    border-radius: 80px;
+    object-fit: cover;
+ border-radius: 6px;
+ cursor: pointer;
+ transition: transform 0.2s ease;
+}
+
+.hotel-gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* Services Section */
+.hotel-services {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-start;
+}
+
+.hotel-services .service-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 160px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.hotel-services .service-box:hover {
+    transform: translateY(-5px);
+}
+
+.service-box img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.5rem;
+}
+
+.service-box p {
+    font-size: 0.95rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Overlay Photo Styling */
+.overlay-photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.overlay-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay-photo:hover .overlay {
+    opacity: 1;
+}
+
+</style>
+<nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="agence.html">Home</a></li>
+        </ul>
+    </nav>
+    
+    <div class="logo">
+        <img src="Photo/logo.png.jpg" alt="Logo">
+    </div>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Travel Locations</h2>
+            <div class="service-items">
+                <div class="service-item">
+                    <h3>National Tours</h3>
+                    <img src="Photo/Algérie 😍🇩🇿.jpg" alt="national">
+                    <p>Explore the beauty of your home country with our exclusive local tours.</p>
+                    <a href="#national" class="btn">View Destinations</a>
+                </div>
+                <div class="service-item">
+                    <h3>International Trips</h3>
+                    <img src="Photo/Discover.jpg" alt="international">
+                    <p>Discover breathtaking international destinations with ease and comfort.</p>
+                    <a href="#International" class="btn">View Destinations</a>
+                </div>
+                <div class="service-item">
+                    <h3>Custom Packages</h3>
+                    <img src="Photo/Algérie 😍🇩🇿.jpg" alt="national">
+                    <p>Plan your trip according to your preferences and budget with our custom packages.</p>
+                    <a href="custompackages.html" class="btn">View Destinations</a>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <section id="national" class="national">
+        <div class="container">
+            <h1>Explore Our Travel Locations</h1>
+            <div class="destination-cards">
+                    <div class="destination-card" id="oran-card">
+                    <img src="Photo/Oran🇩🇿Algeria.jpg" alt="Oran">
+                    <h3>Oran</h3>
+                    <p>Oran is a coastal city known for its beautiful architecture and rich history.</p>
+                </div>
+                <div class="destination-card" id="annaba-card">
+                    <img src="Photo/Annaba.jpg" alt="Annaba">
+                    <h3>Annaba</h3>
+                    <p>Annaba offers stunning beaches and is home to the historic Basilica of St. Augustine.</p>
+                </div>
+                <div class="destination-card" id="Algeria-card">
+                    <img src="Photo/Algeria 🇩🇿_الجزائر.jpg" alt="Algeria">
+                    <h3>Algeria</h3>
+                    <p>Algiers, the capital city, is known for its white buildings and vibrant culture.</p>
+                </div>
+            </div>
+        </div>
+        <a href="#services" class="back-to-top-btn">Back to Travel Locations</a>
+    </section>
+    <section id="International" class="International">
+        <div class="container">
+            <h1>Explore Our Travel Locations</h1>
+            <div class="destination-cards">
+                <div class="destination-card" id="bali-card">
+                    <img src="Photo/Bali.jpg" alt="Bali">
+                    <h3>Bali</h3>
+                    <p>Bali is a tropical paradise known for its stunning beaches, lush greenery, and vibrant culture.</p>
+                </div>
+                <div class="destination-card" id="london-card">
+                    <img src="Photo/London.jpg" alt="London">
+                    <h3>London</h3>
+                    <p>London is a global city, famous for its historic landmarks, diverse culture, and vibrant nightlife.</p>
+                </div>
+                <div class="destination-card" id="egypt-card">
+                    <img src="Photo/egypt.jpg" alt="Egypt">
+                    <h3>Egypt</h3>
+                    <p>Egypt is a land of ancient wonders, home to the Pyramids of Giza and the majestic Nile River.</p>
+                </div>
+                
+            </div>
+        </div>
+        <a href="#services" class="back-to-top-btn">Back to Travel Locations</a> 
+    </section>
+
+    <!-- Oran Details Section (Hidden by default) -->
+    <section id="oran-details" class="city-details" style="display:none;">
+        <h2>Popular Hotels in Oran</h2>
+        <p>Book your hotel directly with your agency</p>      
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+                <div class="carousel" id="carousel">
+                   <div class="card">
+                        <img src="Photo/Viajero de la Historia _ Viajero de la Historia (1).jpg" alt="Royal Hotel Oran">
+                        <h3>Royal Hotel Oran</h3>
+                        <p>HOTEL ★★★★★</p>
+                        <button type="button" onclick="openBookingModal(1, 1); showHotelDetails({
+                            name: 'Hotel Royal ',
+                    price: '$320',
+                    rating: '4.8/5',
+                            images: ['photos hotel/oran/royal/1.jpg',
+                             'photos hotel/oran/royal/2.jpg',
+                            'photos hotel/oran/royal/3.jpg', 'photos hotel/oran/royal/4.jpg', 'photos hotel/oran/royal/5.jpg', 'photos hotel/oran/royal/6.jpg', 'photos hotel/oran/royal/7.jpg', 'photos hotel/oran/royal/8.jpg','photos hotel/oran/royal/9.jpg'],
+                            services: [
+    { name: 'Wi-Fi' },
+    { name: 'Spa' },
+    { name: 'Gym' },
+    {
+        name: 'Rooms',
+        details: {
+            seaView: {
+                description: 'غرف مطلة على البحر',
+                price: '120€ / الليلة'
+            },
+            nonSeaView: {
+                description: 'غرف غير مطلة على البحر',
+                price: '90€ / الليلة'
+            }
+        }
+    },
+    {
+        name: 'Menu',
+        meals: [
+            { name: 'فطور', price: '10€' },
+            { name: 'غداء', price: '18€' },
+            { name: 'عشاء', price: '15€' }
+        ]
+    },
+    {
+        name: 'Child Policy',
+        description: 'سعر الطفل حسب العمر',
+        pricing: [
+            { age: '> 6 سنوات', charge: 'نعم، يُفرض عليه السعر الكامل' },
+            { age: '≤ 6 سنوات', charge: 'لا يُفرض عليه رسوم' }
+        ]
+    }
+]
+
+                        })">RESERVER</button>
+                    </div>
+
+                    <div class="card">
+                        <img src="Photo/Hôtel Oran Bay, Oran 🇩🇿🇩🇿.jpg" alt="Hotel Oran Bay">
+                        <h3>Hotel Oran Bay</h3>
+                        <p>HOTEL ★★★★★</p>
+                        <button type="button" onclick="openBookingModal(2, 1); showHotelDetails({
+                            name: 'Hotel Oran Bay',
+                    location: '',
+                    price: '$320',
+                    rating: '4.8/5',
+                            images: [
+                                'photos hotel/oran/bay/21.jpg',
+                                'photos hotel/oran/bay/22.jpg',
+                                'photos hotel/oran/bay/23.jpg',
+                                'photos hotel/oran/bay/24.jpg',
+                                'photos hotel/oran/bay/25.jpg',
+                                'photos hotel/oran/bay/26.jpg',
+                                'photos hotel/oran/bay/27.jpg',
+                                'photos hotel/oran/bay/28.jpg',
+                                'photos hotel/oran/bay/29.jpg'
+                            ],
+                            services: [
+                            {  name: 'Wi-Fi' },
+                            {  name: 'Swimming Pool'},
+                            {  name:   'Restaurant'},
+                            {  name:   'Spa'},
+                            {  name:  'Gym'}
+                            ]
+                        })">RESERVER</button>                        
+                    </div>
+                    <div class="card">
+                        <img src="Photo/Photo de  Derrière chaque.jpg" alt="Le Méridien Oran">
+                        <h3>Le Méridien Oran</h3>
+                        <p>HOTEL ★★★★★</p>
+                        <button type="button" onclick="openBookingModal(3, 1); showHotelDetails({
+    name: 'Le Méridien Oran',
+                    location: '',
+                    price: '$320',
+                    rating: '4.8/5',
+    images: ['photos hotel/oran/le meridien/1.jpg', 'photos hotel/oran/le meridien/2.jpg', 'photos hotel/oran/le meridien/3.jpg', 'photos hotel/oran/le meridien/4.jpg', 'photos hotel/oran/le meridien/5.jpg', 'photos hotel/oran/le meridien/6.jpg', 'photos hotel/oran/le meridien/7.jpg', 'photos hotel/oran/le meridien/8.jpg','photos hotel/oran/le meridien/9.jpg','photos hotel/oran/le meridien/10.jpg','photos hotel/oran/le meridien/11.jpg'],
+    services: [
+        {  name: 'Wi-Fi' },
+        {  name: 'Infinity Pool' },
+        {  name: 'Luxury Spa' },
+        {  name: 'Gourmet Restaurant' },
+        {  name: 'Fitness Club' }
+                            ]
+                        })">RESERVER</button>
+                    </div>
+                    <div class="card">
+                        <img src="Photo/Sheraton oran.jpg" alt="Four Points by Sheraton">
+                        <h3>Four Points by Sheraton</h3>
+                        <p> HOTEL ★★★★</p>
+                        <button type="button" onclick="openBookingModal(4, 1);showHotelDetails({
+                            name: 'Four Points by Sheraton',
+                            images: [
+                                'photos hotel/oran/le sheraton oran/p.jpg',
+                                'photos hotel/oran/le sheraton oran/p1.jpg',
+                                'photos hotel/oran/le sheraton oran/p2.jpg',
+                                'photos hotel/oran/le sheraton oran/p3.jpg',
+                                'photos hotel/oran/le sheraton oran/p4.jpg',
+                                'photos hotel/oran/le sheraton oran/p5.jpg',
+                                'photos hotel/oran/le sheraton oran/p6.jpg',
+                                'photos hotel/oran/le sheraton oran/p7.jpg',
+                                'photos hotel/oran/le sheraton oran/p8.jpg',
+                                'photos hotel/oran/le sheraton oran/p9.jpg',
+                                'photos hotel/oran/le sheraton oran/p10.jpg'
+                            ],
+                            services: [
+                                { name: 'Wi-Fi' },
+                                {  name: 'Outdoor Pool' },
+                                {  name: 'Bar & Lounge' },
+                                {  name: 'Fitness Center' },
+                                {  name: 'Free Parking' }
+                            ]
+                        })">RESERVER</button>
+                    </div>
+                    <div class="card">
+                        <img src="Photo/Best Western Hotel Colombe, Oran, Algeria.jpg" alt="Best Western Colombe">
+                        <h3>Best Western Colombe</h3>
+                        <p>HOTEL ★★★★</p>
+                        <button type="button" onclick="openBookingModal(5, 1);showHotelDetails({
+                            name: 'Best Western Colombe',
+                            images: [
+                                'photos hotel/oran/best western colombe/1.jpg',
+                                'photos hotel/oran/best western colombe/2.jpg',
+                                'photos hotel/oran/best western colombe/3.jpg',
+                                'photos hotel/oran/best western colombe/4.jpg',
+                                'photos hotel/oran/best western colombe/5.jpg',
+                                'photos hotel/oran/best western colombe/6.jpg',
+                                'photos hotel/oran/best western colombe/7.jpg',
+                                'photos hotel/oran/best western colombe/8.jpg',
+                                'photos hotel/oran/best western colombe/9.jpg',
+                                'photos hotel/oran/best western colombe/10.jpeg',
+                                'photos hotel/oran/best western colombe/11.jpeg',
+                                'photos hotel/oran/best western colombe/12.jpeg',
+                                'photos hotel/oran/best western colombe/13.jpeg',
+                                'photos hotel/oran/best western colombe/14.jpeg',
+                            ],
+                            services: [
+                                {  name: 'Wi-Fi' },
+                                {  name: 'Breakfast Included' },
+                                {  name: 'Fitness Room' },
+                                {  name: 'Laundry Service' },
+                                { name: 'Free Parking' }
+                            ]
+                        })">RESERVER</button>
+                    </div>
+                </div>            
+                <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>  
+                </div>
+            <a href="#national" class="back-to-top-btn" id="back-to-national">Back</a>
+        </div>
+    </section>
+    <!-- Annaba Details Section (Hidden by default) -->
+<section id="annaba-details" class="city-details" style="display:none;">
+    <h2>Popular Hotels in Annaba</h2>
+    <p>Book your hotel directly with your agency</p>    
+    <div class="carousel-container">
+        <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+        <div class="carousel" id="carousel">
+            <div class="card">
+                <img src="Photo/Sheraton Annaba Hotel 📍.jpg" alt="Sheraton Annaba Hotel">
+                <h3>Sheraton Annaba Hotel</h3>
+                <p>HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(6, 2);showHotelDetails({
+                    name: 'Sheraton Annaba Hotel',
+                    images: [
+                        'photos hotel/anaba/sheraton anaba/d.avif',
+                        'photos hotelanaba/sheraton anaba/h.avif',
+                        'photos hotel/anaba/sheraton anaba/l.webp',
+                        'photos hotel/anaba/sheraton anaba/nn.webp',
+                        'photos hotel/anaba/sheraton anaba/yy.webp',
+                        'photos hotel/anaba/sheraton anaba/uu.avif',
+                        'photos hotel/anaba/sheraton anaba/f.avif'
+                    ],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Spa' },
+                        { name: 'Fitness Center' },
+                        {  name: 'Restaurant' },
+                        {  name: 'Swimming Pool' }
+                    ],
+                    location: 'https://www.google.com/maps?q=Sheraton+Annaba+Hotel',
+                    price: '$150',
+                    rating: '4.7/5'
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Hôtel El Mountazah – Annaba - Explore Algeria.jpg" alt="Hôtel El Mountazah">
+                <h3>Hôtel El Mountazah</h3>
+                <p>HOTEL ★★★★</p>
+                <button type="button" onclick="openBookingModal(7, 2);showHotelDetails({
+                    name: 'Hôtel El Mountazah',
+                    images: [
+                        'anaba/Hôtel El Mountazah/43.avif',
+                        'elmountazah/2.jpg',
+                        'elmountazah/3.jpg',
+                        'elmountazah/4.jpg',
+                        'elmountazah/5.jpg'
+                    ],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Breakfast Included' },
+                        {  name: 'Free Parking' },
+                        { name: 'Restaurant' }
+                    ],
+                    location: 'https://www.google.com/maps?q=Hôtel+El+Mountazah',
+                    price: '$90',
+                    rating: '4.3/5'
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Hôtel Rym El Djamil - Annaba (Algérie).jpg" alt="Hôtel Rym El Djamil">
+                <h3>Hôtel Rym El Djamil</h3>
+                <p>HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(8, 2);showHotelDetails({
+                    name: 'Hôtel Rym El Djamil',
+                    images: [
+                        'photos hotel/anaba/rym/1.jpg',
+                        'photos hotel/anaba/rym/2.jpg',
+                        'photos hotel/anaba/rym/3.jpg',
+                        'photos hotel/anaba/rym/4.jpg'
+                    ],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Outdoor Pool' },
+                        {  name: 'Restaurant' }
+                    ],
+                    location: 'https://www.google.com/maps?q=Hôtel+Rym+El+Djamil',
+                    price: '$85',
+                    rating: '4.0/5',
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Hôtel Sabri Annaba.jpg" alt="Hôtel Sabri">
+                <h3>Hôtel Sabri</h3>
+                <p>HOTEL ★★★★</p>
+                <button type="button" onclick="openBookingModal(9, 2);showHotelDetails({
+                    name: 'Hôtel Sabri',
+                    location: 'https://www.google.com/maps?q=Hôtel+Sabri',
+                    price: '$95',
+                    rating: '4.5/5',
+                    images: [
+                        'photos hotel/anaba/sabri/1.jpg',
+                        'photos hotel/anaba/sabri/2.jpg',
+                        'photos hotel/anaba/sabri/3.jpg',
+                        'photos hotel/anaba/sabri/4.jpg'
+                    ],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Spa' },
+                        {  name: 'Sea View' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Mimosa Palace, Annaba, Algeria.jpg" alt="Mimosa Palace Hotel">
+                <h3>Mimosa Palace Hotel</h3>
+                <p>HOTEL ★★★★</p>
+                <button type="button" onclick="openBookingModal(10, 2);showHotelDetails({
+                    name: 'Mimosa Palace Hotel',
+                    location: 'https://www.google.com/maps?q=Mimosa+Palace+Hotel',
+                    price: '$78',
+                    rating: '4.1/5',
+                    images: [
+                        'photos hotel/anaba/mimosa/1.jpg',
+                        'photos hotel/anaba/mimosa/2.jpg',
+                        'photos hotel/anaba/mimosa/3.jpg',
+                        'photos hotel/anaba/mimosa/4.jpg'
+                    ],
+                    services: [
+                        { name: 'Wi-Fi' },
+                        {  name: 'Gym' },
+                        { name: 'Free Breakfast' }
+                    ]
+                })">RESERVER</button>
+            </div>
+        </div>
+    
+        <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+    </div>
+    <a href="#national" class="back-to-top-btn" id="back-to-national">Back</a>
+</section>
+
+    <!--  Alger Details Section (Hidden by default) -->
+<section id="algeria-details" class="city-details" style="display: none;">
+    <h2>Popular Hotels in Algiers</h2>
+    <p>Book your hotel directly with your agency</p>    
+    <div class="carousel-container">
+        <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+        <div class="carousel" id="carousel">
+            <div class="card">
+                <img src="Photo/SOFITEL ALGIERS HAMMA GARDEN HOTEL.jpg" alt="Sofitel Algiers Hamma Garden">
+                <h3>Sofitel Algiers Hamma Garden</h3>
+                <p>HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(11, 3);showHotelDetails({
+                    name: 'Sofitel Algiers Hamma Garden',
+                    location: 'https://www.google.com/maps?q=Sofitel+Algiers+Hamma+Garden',
+                    price: '$200',
+                    rating: '4.8/5',
+                    images: ['photos hotel/alger/Sofitel Algiers Hamma Garden/00.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/01.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/1.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/02.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/2.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/03.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/3.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/04.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/4.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/05.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/5.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/6.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/7.jpg',
+                             'photos hotel/alger/Sofitel Algiers Hamma Garden/8.jpg'
+                            ],
+                    services: [
+                        { name: 'Free Wi-Fi' },
+                        {  name: 'Spa' },
+                        {  name: 'Outdoor Pool' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/EL-Aurassi Hotel.jpg" alt="El Aurassi Hotel">
+                <h3>El Aurassi Hotel</h3>
+                <p>HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(12, 3);showHotelDetails({
+                    name: 'El Aurassi Hotel',
+                    location: 'https://www.google.com/maps?q=El+Aurassi+Hotel',
+                    price: '$180',
+                    rating: '4.6/5',
+                    images: ['photos hotel/alger/El Aurassi Hotel/1.jpg',
+                             'photos hotel/alger/El Aurassi Hotel/2.jpg',
+                             'photos hotel/alger/El Aurassi Hotel/3.jpg',
+                             'photos hotel/alger/El Aurassi Hotel/4.jpg',
+                             'photos hotel/alger/El Aurassi Hotel/5.jpg',
+                             'photos hotel/alger/El Aurassi Hotel/6.jpg',
+                             'photos hotel/alger/El Aurassi Hotel/7.jpg',
+                             'photos hotel/alger/El Aurassi Hotel/9.jpg',
+                             'photos hotel/alger/El Aurassi Hotel/66.jpg'
+                            ],
+                    services: [
+                        { name: 'Free Wi-Fi' },
+                        {  name: 'Gym' },
+                        {  name: 'Restaurant' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Hyatt Regency Algiers Airport.jpg" alt="Hyatt Regency Algiers Airport">
+                <h3>Hyatt Regency Algiers Airport</h3>
+                <p>HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(13, 3);showHotelDetails({
+                    name: 'Hyatt Regency Algiers Airport',
+                    location: 'https://www.google.com/maps?q=Hyatt+Regency+Algiers+Airport',
+                    price: '$220',
+                    rating: '4.7/5',
+                    images: ['photos hotel/alger/Hyatt Regency Algiers Airport/1.jpg',
+                    'photos hotel/alger/Hyatt Regency Algiers Airport/2.jpg',
+                    'photos hotel/alger/Hyatt Regency Algiers Airport/3.jpg',
+                    'photos hotel/alger/Hyatt Regency Algiers Airport/5.jpg',
+                    'photos hotel/alger/Hyatt Regency Algiers Airport/6.jpg',
+                    'photos hotel/alger/Hyatt Regency Algiers Airport/44.jpg',
+                    'photos hotel/alger/Hyatt Regency Algiers Airport/55.jpg',
+                    'photos hotel/alger/Hyatt Regency Algiers Airport/66.jpg',
+                    'photos hotel/alger/Hyatt Regency Algiers Airport/88.jpg',
+                    'photos hotel/alger/Hyatt Regency Algiers Airport/887.jpg'
+                     ],
+                    services: [
+                        {  name: 'Free Wi-Fi' },
+                        {  name: 'Airport Shuttle' },
+                        {  name: 'Spa' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Lamaraz Arts Hotel.jpg" alt="Lamaraz Arts Hotel">
+                <h3>Lamaraz Arts Hotel</h3>
+                <p>HOTEL ★★★★</p>
+                <button   type="button" onclick="openBookingModal(14, 3);showHotelDetails({
+                    name: 'Lamaraz Arts Hotel',
+                    location: 'https://www.google.com/maps?q=Lamaraz+Arts+Hotel',
+                    price: '$150',
+                    rating: '4.4/5',
+                    images: ['photos hotel/alger/Lamaraz Hotels/1.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/2.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/3.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/5.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/6.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/7.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/9.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/11.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/22.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/33.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/44.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/55.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/65.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/66.jpg',
+                              'photos hotel/alger/Lamaraz Hotels/84.jpg' ],
+                    services: [
+                        {  name: 'Free Wi-Fi' },
+                        {  name: 'Gym' },
+                        {  name: 'Wellness Center' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Hotel Best Night.jpg" alt="Hotel Best Night">
+                <h3>Hotel Best Night</h3>
+                <p>HOTEL ★★★★</p>
+                <button  type="button" onclick="openBookingModal(15, 3);showHotelDetails({
+                    name: 'Hotel Best Night',
+                    location: 'https://www.google.com/maps?q=Hotel+Best+Night',
+                    price: '$90',
+                    rating: '4.1/5',
+                    images: ['photos hotel/alger/Hotel Best Night/1.jpg',
+                    'photos hotel/alger/Hotel Best Night/2.jpg',
+                    'photos hotel/alger/Hotel Best Night/3.jpg',
+                    'photos hotel/alger/Hotel Best Night/4.jpg',
+                    'photos hotel/alger/Hotel Best Night/5.jpg',
+                    'photos hotel/alger/Hotel Best Night/06.jpg',
+                    'photos hotel/alger/Hotel Best Night/6.jpg',
+                    'photos hotel/alger/Hotel Best Night/9.jpg',
+                    'photos hotel/alger/Hotel Best Night/10.jpg',
+                    'photos hotel/alger/Hotel Best Night/25.jpg',
+                    'photos hotel/alger/Hotel Best Night/32.jpg',
+                    'photos hotel/alger/Hotel Best Night/52.jpg',
+                    'photos hotel/alger/Hotel Best Night/55.jpg',
+                    'photos hotel/alger/Hotel Best Night/66.jpg',
+                    'photos hotel/alger/Hotel Best Night/78.jpg',
+                    'photos hotel/alger/Hotel Best Night/88.jpg',
+                    'photos hotel/alger/Hotel Best Night/92.jpg',
+                    'photos hotel/alger/Hotel Best Night/99.jpg',
+                    'photos hotel/alger/Hotel Best Night/553.jpg'
+                    ],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Free Parking' },
+                        {  name: 'Free Breakfast' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/★★★ ibis Alger Aéroport, Alger, Algeria.jpg" alt="ibis Alger Aéroport">
+                <h3>ibis Alger Aéroport</h3>
+                <p>HOTEL ★★★</p>
+                <button  type="button" onclick="openBookingModal(16, 3);showHotelDetails({
+                    name: 'ibis Alger Aéroport',
+                    location: 'https://www.google.com/maps?q=ibis+Alger+Aéroport',
+                    price: '$85',
+                    rating: '4.0/5',
+                    images: ['photos hotel/alger/ibis Alger Aéroport/2.jpg',
+                     'photos hotel/alger/ibis Alger Aéroport/5.jpg',
+                     'photos hotel/alger/ibis Alger Aéroport/6.jpg',
+                     'photos hotel/alger/ibis Alger Aéroport/9.jpg',
+                     'photos hotel/alger/ibis Alger Aéroport/12.jpg',
+                     'photos hotel/alger/ibis Alger Aéroport/21.jpg',
+                     'photos hotel/alger/ibis Alger Aéroport/22.jpg',
+                     'photos hotel/alger/ibis Alger Aéroport/25.jpg',
+                     'photos hotel/alger/ibis Alger Aéroport/95.jpg'
+                    ],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Airport Shuttle' },
+                        {  name: 'Restaurant' }
+                    ]
+                })">Reserve</button>            </div>
+            <div class="card">
+                <img src="Photo/City Hotel Alger.jpg" alt="City Hotel Alger">
+                <h3>City Hotel Alger</h3>
+                <p>HOTEL ★★★</p>
+                <button   type="button" onclick="openBookingModal(17, 3);showHotelDetails({
+                    name: 'City Hotel Alger',
+                    location: 'https://www.google.com/maps?q=City+Hotel+Alger',
+                    price: '$95',
+                    rating: '3,8/5',
+                    images: ['photos hotel/alger/City Hotel Alger/28.jpg',
+                    'photos hotel/alger/City Hotel Alger/54.jpg',
+                    'photos hotel/alger/City Hotel Alger/62.jpg',
+                    'photos hotel/alger/City Hotel Alger/75.jpg',
+                    'photos hotel/alger/City Hotel Alger/77.jpg',
+                    'photos hotel/alger/City Hotel Alger/88.jpg',
+                    'photos hotel/alger/City Hotel Alger/95.jpg' ],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Gym' },
+                        {  name: 'Breakfast Included' }
+                    ]
+                })">RESERVER</button>
+            </div>
+        </div>    
+        <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <a href="#national" class="back-to-top-btn" id="back-to-national">Back</a>
+</section>
+
+    <!--  bali Details Section (Hidden by default) -->
+<section id="bali-details" class="city-details" style="display: none;">
+    <h2>Popular Hotels in Bali</h2>
+    <p>Book your hotel directly with your agency</p>    
+    <div class="carousel-container">
+        <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+        <div class="carousel" id="carousel">
+            <div class="card">
+                <img src="Photo/Viceroy Bali.jpg" alt="Viceroy Bali">
+                <h3>Viceroy Bali</h3>
+                <p>HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(18, 4);showHotelDetails({
+                    name: 'Viceroy Bali',
+                    location: 'https://www.google.com/maps?q=Viceroy+Bali',
+                    price: '$320',
+                    rating: '4.8/5',
+                    images: ['photos hotel/bali/Viceroy Bali/01.jpg', 
+                    'photos hotel/bali/Viceroy Bali/1.jpg',
+                    'photos hotel/bali/Viceroy Bali/02.jpg',
+                    'photos hotel/bali/Viceroy Bali/2.jpg',
+                    'photos hotel/bali/Viceroy Bali/03.jpg',
+                    'photos hotel/bali/Viceroy Bali/3.jpg',
+                    'photos hotel/bali/Viceroy Bali/04.jpg',
+                    'photos hotel/bali/Viceroy Bali/05.jpg',
+                    'photos hotel/bali/Viceroy Bali/5.jpg',
+                    'photos hotel/bali/Viceroy Bali/6.jpg',
+                    'photos hotel/bali/Viceroy Bali/7.jpg',
+                    'photos hotel/bali/Viceroy Bali/8.jpg',
+                    'photos hotel/bali/Viceroy Bali/9.jpg'
+                    ],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Spa' },
+                        {  name: 'Pool' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Nusa Dua Beach Hotel & Spa.jpg" alt="Nusa Dua Beach Hotel & Spa">
+                <h3>Nusa Dua Beach Hotel & Spa</h3>
+                <p>HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(19, 4);showHotelDetails({
+                    name: 'Nusa Dua Beach Hotel & Spa',
+                    location: 'https://www.google.com/maps?q=Nusa+Dua+Beach+Hotel+%26+Spa',
+                    price: '$210',
+                    rating: '4.6/5',
+                    images: ['photos hotel/bali/Nusa Dua Beach Hotel & Spa/01.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/1.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/02.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/2.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/03.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/3.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/04.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/4.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/5.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/6.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/7.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/8.jpg', 
+                    'photos hotel/bali/Nusa Dua Beach Hotel & Spa/9.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Beach Access' },
+                        {  name: 'Restaurant' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/InterContinental Bali Sanur Resort _ Luxury Hotel in Bali.jpg" alt="InterContinental Bali Sanur Resort">
+                <h3>InterContinental Bali Sanur Resort</h3>
+                <p>HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(20, 4);showHotelDetails({
+                    name: 'InterContinental Bali Sanur Resort',
+                    location: 'https://www.google.com/maps?q=InterContinental+Bali+Sanur+Resort',
+                    price: '$275',
+                    rating: '4.7/5',
+                    images: ['photos hotel/bali/InterContinental Bali Sanur Resort/1.jpg', 
+                    'photos hotel/bali/InterContinental Bali Sanur Resort/2.jpg', 
+                    'photos hotel/bali/InterContinental Bali Sanur Resort/3.jpg', 
+                    'photos hotel/bali/InterContinental Bali Sanur Resort/4.jpg', 
+                    'photos hotel/bali/InterContinental Bali Sanur Resort/5.jpg', 
+                    'photos hotel/bali/InterContinental Bali Sanur Resort/6.jpg', 
+                    ],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Gym' },
+                        {  name: 'Spa' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Four Seasons Resort Bali At Sayan, Bali.jpg" alt="Four Seasons Resort Bali">
+                <h3>Four Seasons Resort Bali</h3>
+                <p> HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(21, 4);showHotelDetails({
+                    name: 'Four Seasons Resort Bali',
+                    location: 'https://www.google.com/maps?q=Four+Seasons+Resort+Bali',
+                    price: '$450',
+                    rating: '4.9/5',
+                    images: ['photos hotel/bali/Four Seasons Resort Bali/01.jpg',
+                    'photos hotel/bali/Four Seasons Resort Bali/02.jpg',
+                    'photos hotel/bali/Four Seasons Resort Bali/03.jpg',
+                    'photos hotel/bali/Four Seasons Resort Bali/04.jpg',
+                    'photos hotel/bali/Four Seasons Resort Bali/05.jpg',
+                    'photos hotel/bali/Four Seasons Resort Bali/00000006.jpg'
+                     ],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Butler Service' },
+                        {  name: 'Infinity Pool' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/The St_ Regis Bali Resort.jpg" alt="The St. Regis Bali Resort">
+                <h3>The St. Regis Bali Resort</h3>
+                <p> HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(22, 4);showHotelDetails({
+                    name: 'The St. Regis Bali Resort',
+                    location: 'https://www.google.com/maps?q=The+St.+Regis+Bali+Resort',
+                    price: '$500',
+                    rating: '4.9/5',
+                    images: ['photos hotel/bali/The St. Regis Bali Resort/0000000000.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/01.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/1.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/02.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/2.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/3.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/4.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/05.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/5.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/6.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/7.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/8.jpg',
+                        'photos hotel/bali/The St. Regis Bali Resort/80.jpg'
+                    ],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Butler Service' },
+                        {  name: 'Luxury Spa' }
+                    ]
+                })">RESERVER</button>
+            </div>
+        </div>
+        <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <a href="#national" class="back-to-top-btn" id="back-to-national">Back</a>
+</section>
+
+<!--  london Details Section (Hidden by default) -->
+<section id="london-details" class="city-details" style="display: none;">
+    <h2>Popular Hotels in London</h2>
+    <p>Book your hotel directly with your agency</p>
+    <div class="carousel-container">
+        <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+        <div class="carousel" id="carousel">
+            <div class="card">
+                <img src="Photo/The Ritz London.jpg" alt="The Ritz London">
+                <h3>The Ritz London</h3>
+                <p> HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(80, 5);showHotelDetails({
+                    name: 'The Ritz London',
+                    location: 'https://www.google.com/maps?q=The+Ritz+London',
+                    price: '$620',
+                    rating: '4.8/5',
+                    images: ['ritz/1.jpg', 'ritz/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Michelin-star Dining' },
+                        {  name: 'Butler Service' }
+                    ]
+                })">Reserve</button>            </div>
+            <div class="card">
+                <img src="Photo/the savoy.jpg" alt="The Savoy">
+                <h3>The Savoy</h3>
+                <p> HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(81, 5);showHotelDetails({
+                    name: 'The Savoy',
+                    location: 'https://www.google.com/maps?q=The+Savoy+London',
+                    price: '$580',
+                    rating: '4.7/5',
+                    images: ['savoy/1.jpg', 'savoy/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Spa' },
+                        { name: 'West End Access' }
+                    ]
+                })">Reserve</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Shangri-La Hotel, London.jpg" alt="Shangri-La The Shard">
+                <h3>Shangri-La The Shard</h3>
+                <p> HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(82, 5);showHotelDetails({
+                    name: 'Shangri-La The Shard',
+                    location: 'https://www.google.com/maps?q=Shangri-La+The+Shard+London',
+                    price: '$710',
+                    rating: '4.9/5',
+                    images: ['shard/1.jpg', 'shard/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Skyline Views' },
+                        {  name: 'Infinity Pool' }
+                    ]
+                })">Reserve</button>
+            </div>
+            <div class="card">
+                <img src="Photo/claridge's.jpg" alt="Claridge’s">
+                <h3>Claridge’s</h3>
+                <p> HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(83, 5);showHotelDetails({
+                    name: 'Claridge’s',
+                    location: 'https://www.google.com/maps?q=Claridge%E2%80%99s+London',
+                    price: '$650',
+                    rating: '4.8/5',
+                    images: ['claridges/1.jpg', 'claridges/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Luxury Spa' },
+                        {  name: 'Fine Dining' }
+                    ]
+                })">Reserve</button>
+            </div>
+            <div class="card">
+                <img src="Photo/The Langham.jpg" alt="The Langham">
+                <h3>The Langham</h3>
+                <p> HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(84, 5);showHotelDetails({
+                    name: 'The Langham',
+                    location: 'https://www.google.com/maps?q=The+Langham+London',
+                    price: '$570',
+                    rating: '4.6/5',
+                    images: ['langham/1.jpg', 'langham/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Afternoon Tea' },
+                        {  name: 'Spa' }
+                    ]
+                })">Reserve</button>
+            </div>
+            <div class="card">
+                <img src="Photo/The Park Plaza Westminster Bridge Hotel.jpg" alt="Park Plaza Westminster Bridge">
+                <h3>Park Plaza Westminster Bridge</h3>
+                <p> HOTEL ★★★★</p>
+                <button type="button" onclick="openBookingModal(85, 5);showHotelDetails({
+                    name: 'Park Plaza Westminster Bridge',
+                    location: 'https://www.google.com/maps?q=Park+Plaza+Westminster+Bridge+London',
+                    price: '$320',
+                    rating: '4.4/5',
+                    images: ['parkplaza/1.jpg', 'parkplaza/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Fitness Center' },
+                        {  name: 'Indoor Pool' }
+                    ]
+                })">Reserve</button>
+            </div>
+            <div class="card">
+                <img src="Photo/The Clermont London.jpg" alt="The Clermont, Charing Cross">
+                <h3>The Clermont, Charing Cross</h3>
+                <p> HOTEL ★★★★</p>
+                <button type="button" onclick="openBookingModal(86, 5);showHotelDetails({
+                    name: 'The Clermont, Charing Cross',
+                    location: 'https://www.google.com/maps?q=The+Clermont+Charing+Cross+London',
+                    price: '$360',
+                    rating: '4.5/5',
+                    images: ['clermont/1.jpg', 'clermont/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Historic Landmark' },
+                        {  name: 'Restaurant' }
+                    ]
+                })">Reserve</button>
+            </div>
+            <div class="card">
+                <img src="Photo/THE MONTAGUE ON THE GARDENS.jpg" alt="The Montague on the Gardens">
+                <h3>The Montague on the Gardens</h3>
+                <p> HOTEL ★★★★</p>
+                <button type="button" onclick="openBookingModal(87, 5);showHotelDetails({
+                    name: 'The Montague on the Gardens',
+                    location: 'https://www.google.com/maps?q=The+Montague+on+the+Gardens+London',
+                    price: '$340',
+                    rating: '4.6/5',
+                    images: ['montague/1.jpg', 'montague/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Private Garden' },
+                        {  name: 'Afternoon Tea & Bar' }
+                    ]
+                })">Reserve</button>
+            </div>
+        </div>
+        <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+    </div>
+  <a href="#national" class="back-to-top-btn" id="back-to-national">Back</a>
+</section>
+
+    <!--  egypt Details Section (Hidden by default) -->
+<section id="egypt-details" class="city-details" style="display: none;">
+    <h2>Popular Hotels in Egypt</h2>
+    <p>Book your hotel directly with your agency</p>
+    <div class="carousel-container">
+        <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+        <div class="carousel" id="carousel">
+            <div class="card">
+                <img src="Photo/Four Seasons Hotel Cairo at Nile Plaza.jpg" alt="Four Seasons Cairo">
+                <h3>Four Seasons Hotel Cairo</h3>
+                <p> HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(93, 6);showHotelDetails({
+                    name: 'Four Seasons Hotel Cairo',
+                    location: 'https://www.google.com/maps?q=Four+Seasons+Hotel+Cairo',
+                    price: '$390',
+                    rating: '4.9/5',
+                    images: ['fscairo/1.jpg', 'fscairo/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Spa' },
+                        {  name: 'Pool' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Marriott Hotel.jpg" alt="Marriott Mena House">
+                <h3>Marriott Mena House</h3>
+                <p> HOTEL ★★★★★</p>
+                <button  type="button" onclick="openBookingModal(94, 5);showHotelDetails({
+                    name: 'Marriott Mena House',
+                    location: 'https://www.google.com/maps?q=Marriott+Mena+House',
+                    price: '$280',
+                    rating: '4.8/5',
+                    images: ['menahouse/1.jpg', 'menahouse/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Pyramid View' },
+                        {  name: 'Restaurant' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Sofitel Winter Palace Luxor.jpg" alt="Sofitel Winter Palace Luxor">
+                <h3>Sofitel Winter Palace Luxor</h3>
+                <p> HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(95, 5);showHotelDetails({
+                    name: 'Sofitel Winter Palace Luxor',
+                    location: 'https://www.google.com/maps?q=Sofitel+Winter+Palace+Luxor',
+                    price: '$220',
+                    rating: '4.7/5',
+                    images: ['winterpalace/1.jpg', 'winterpalace/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Historic Gardens' },
+                        {  name: 'Pool' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/Sofitel Legend Old Cataract Aswan.jpg" alt="Sofitel Old Cataract Aswan">
+                <h3>Sofitel Legend Old Cataract Aswan</h3>
+                <p> HOTEL ★★★★★</p>
+                <button type="button" onclick="openBookingModal(96, 5);showHotelDetails({
+                    name: 'Sofitel Legend Old Cataract Aswan',
+                    location: 'https://www.google.com/maps?q=Sofitel+Legend+Old+Cataract+Aswan',
+                    price: '$330',
+                    rating: '4.9/5',
+                    images: ['cataract/1.jpg', 'cataract/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        { name: 'Luxury Spa' },
+                        {  name: 'Nile View' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/★★★★★ Four Seasons Resort Sharm El Sheikh.jpg" alt="Four Seasons Sharm El Sheikh">
+                <h3>Four Seasons Resort Sharm El Sheikh</h3>
+                <p> HOTEL ★★★★★</p>
+                <button  type="button" onclick="openBookingModal(97, 5);showHotelDetails({
+                    name: 'Four Seasons Resort Sharm El Sheikh',
+                    location: 'https://www.google.com/maps?q=Four+Seasons+Resort+Sharm+El+Sheikh',
+                    price: '$410',
+                    rating: '4.9/5',
+                    images: ['fssharm/1.jpg', 'fssharm/2.jpg'],
+                    services: [
+                        {  name: 'Wi-Fi' },
+                        {  name: 'Diving Center' },
+                        {  name: 'Private Beach' }
+                    ]
+                })">RESERVER</button>
+            </div>
+            <div class="card">
+                <img src="Photo/four seasons Alexandria.jpg" alt="Four Seasons Alexandria">
+                <h3>Four Seasons Hotel Alexandria</h3>
+                <p> HOTEL ★★★★★</p>
+               <button type="button" onclick="openBookingModal(98, 6); showHotelDetails({
+    name: 'Four Seasons Hotel Alexandria',
+    location: 'https://www.google.com/maps?q=Four+Seasons+Hotel+Alexandria',
+    price: '$370',
+    rating: '4.7/5',
+    images: ['fsalex/1.jpg', 'fsalex/2.jpg'],
+    services: [
+        { name: 'Wi-Fi' },
+        { name: 'Sea View' },
+        { name: 'Spa & Wellness' }
+    ]
+})">RESERVER</button>
+
+                 
+            </div>
+        </div>
+        <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+    </div>
+    <a href="#national" class="back-to-top-btn" id="back-to-national">Back</a>
+</section>
+
+    
+<!-- Booking Popup -->
+<section id="hotel-details-section" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closeBookingPopup()">&times;</span>
+    <h2 id="hotel-name"></h2>
+
+    <div class="hotel-gallery" id="hotel-gallery"></div>
+    <div class="hotel-services" id="hotel-services"></div>   
+    
+        <p><strong>📍 Location:</strong> <a id="hotel-location" href="#" target="_blank">View on Map</a></p>
+        <p><strong>💰 Price per night:</strong> <span id="hotel-price"></span></p>
+        <p><strong>⭐ Customer Rating:</strong> <span id="hotel-rating"></span></p>
+
+        <!-- Booking Form -->
+        <form id="booking-form" action="save_reservation.php" method="POST">
+            <input type="hidden" id="hotel-id" name="hotel_id" value="11">
+            <input type="hidden" id="destination-id" name="destination_id" value="3">
+            
+
+            <label for="phone"> Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="+213..." required>
+            <label for="birthday"> Date of Birth:</label>
+            <input type="date" id="birthday" name="birthday" required>
+        
+            <label for="passport"> Passport Number:</label>
+            <input type="text" id="passport" name="passport" placeholder="Enter your passport number" required>
+
+            <label for="checkin"> Check-in Date:</label>
+            <input type="date" id="checkin" name="checkin" required>
+            
+            <label for="checkout"> Check-out Date:</label>
+            <input type="date" id="checkout" name="checkout"  required>
+            
+            <label for="guests"> Number of Guests:</label>
+            <input type="number" id="guests" name="guests"  required>
+            
+            <label for="roomtype"> Room Type:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">Select Room Type</option>
+                <option value="Single">Single Room</option>
+                <option value="Double">Double Room</option>
+                <option value="Suite">Suite</option>
+                <option value="Family">Family Room</option>
+            </select>
+            <label for="payment"> Payment Method:</label>
+            <select id="payment" name="payment" onchange="showBaridiLink()">
+                <option value="card">Credit Card</option>
+                <option value="paypal">Cash</option>
+                <option value="baridi">Baridi Mob</option>
+            </select>
+            <div id="baridi-link" style="margin-top:10px; display:none;">
+                To pay via <strong>Baridi Mob</strong>, please visit:     
+                <a href="https://baridimob.pro/" target="_blank">https://baridimob.pro/</a>
+            </div>
+            
+            <button type="submit" class="btn-confirm">Confirm Booking</button>
+        </form>
+</section>
+  <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 SkyLine. All rights reserved.</p>
+        </div>
+    </footer>
+
+  <script>
+function openBookingModal(hotelId, destinationId) {
+    document.getElementById('hotel-id').value = hotelId;
+    document.getElementById('destination-id').value = destinationId;
+    
+   
+}
+</script>
+
+        
+<script>
+    const carousel = document.getElementById("carousel");
+
+    function nextSlide() {
+     carousel.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+
+    function prevSlide() {
+     carousel.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+
+    function showHotelDetails(hotel) {
+     // Show popup
+     const popup = document.getElementById("hotel-details-section");
+    popup.style.display = "flex";
+
+    // Fill hotel name
+    document.getElementById("hotel-name").textContent = hotel.name;
+    
+    // Fill price and rating
+    document.getElementById("hotel-price").textContent = hotel.price;
+    document.getElementById("hotel-rating").textContent = hotel.rating;
+
+    // Populate services
+    const services = document.getElementById("hotel-services");
+    services.innerHTML = ""; // Clear previous
+    
+    hotel.services.forEach(service => {
+            if (service.name === "Rooms") {
+                const seaView = document.createElement("span");
+                seaView.textContent = `${service.details.seaView.description} - ${service.details.seaView.price}`;
+                services.appendChild(seaView);
+    
+                const nonSeaView = document.createElement("span");
+                nonSeaView.textContent = `${service.details.nonSeaView.description} - ${service.details.nonSeaView.price}`;
+                services.appendChild(nonSeaView);
+            } else if (service.name === "Menu") {
+                service.meals.forEach(meal => {
+                    const mealSpan = document.createElement("span");
+                    mealSpan.textContent = `${meal.name} - ${meal.price}`;
+                    services.appendChild(mealSpan);
+                });
+            } else if (service.name === "Child Policy") {
+                service.pricing.forEach(p => {
+                    const childPolicySpan = document.createElement("span");
+                    childPolicySpan.textContent = `${p.age}: ${p.charge}`;
+                    services.appendChild(childPolicySpan);
+                });
+            } else {
+                const serviceSpan = document.createElement("span");
+                serviceSpan.textContent = service.name;
+                services.appendChild(serviceSpan);
+            }
+        });
+
+        function openBookingPopup(hotelId) {
+    document.getElementById('hotel-details-section').style.display = 'block';
+    document.getElementById('hotel_id').value = hotelId;
+}
+
+    // الصور (عرض فقط أول 4 مع overlay في الأخير إذا كانت هناك صور إضافية)
+    const gallery = document.getElementById("hotel-gallery");
+gallery.innerHTML = ""; // Clear previous content
+
+const maxPreview = 4;
+const totalImages = hotel.images.length;
+
+hotel.images.slice(0, maxPreview).forEach((imgSrc, index) => {
+    const photoDiv = document.createElement("div");
+    photoDiv.className = "photo";
+
+    const img = document.createElement("img");
+    img.src = imgSrc;
+    img.alt = `Photo ${index + 1}`;
+    photoDiv.appendChild(img);
+
+    // If it's the last preview image and more images exist
+    if (index === maxPreview - 1 && totalImages > maxPreview) {
+        const overlay = document.createElement("div");
+        overlay.className = "overlay";
+        overlay.textContent = `+${totalImages - maxPreview} Photos`;
+        photoDiv.classList.add("overlay-photo");
+
+        photoDiv.appendChild(overlay);
+
+        // On click: show remaining images
+        photoDiv.onclick = () => {
+            hotel.images.slice(maxPreview).forEach((extraSrc, extraIndex) => {
+                const extraDiv = document.createElement("div");
+                extraDiv.className = "photo extra-photo";
+
+                const extraImg = document.createElement("img");
+                extraImg.src = extraSrc;
+                extraImg.alt = `Photo ${maxPreview + extraIndex + 1}`;
+
+                extraDiv.appendChild(extraImg);
+                gallery.appendChild(extraDiv);
+            });
+
+            // Remove overlay after expanding
+            photoDiv.onclick = null;
+            photoDiv.querySelector(".overlay").remove();
+        };
+    }
+
+    gallery.appendChild(photoDiv);
+});
+
+    // الخدمات (services)
+const serviceContainer = document.getElementById("hotel-services");
+serviceContainer.innerHTML = ""; // تفريغ السابق
+
+hotel.services.forEach(service => {
+    const serviceBox = document.createElement("div");
+    serviceBox.className = "service-box";
+    serviceBox.textContent = service.name; // فقط الاسم بدون الأيقونة
+
+    serviceContainer.appendChild(serviceBox);
+});
+
+
+    // عرض التفاصيل
+    document.getElementById("hotel-details-section").style.display = "flex";
+}
+   
+function closeBookingPopup() {
+    document.getElementById("hotel-details-section").style.display = "none";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const destinationCards = document.querySelectorAll(".destination-card"); // جميع البطاقات
+    const nationalSection = document.getElementById("national"); // القسم الرئيسي الوطني
+    const internationalSection = document.getElementById("International"); // القسم الرئيسي الدولي
+    const servicesSection = document.getElementById("services"); // قسم الخدمات
+    const cityDetailsSections = document.querySelectorAll(".city-details"); // جميع الأقسام الخاصة بالمدن
+    const backButtons = document.querySelectorAll(".back-to-top-btn"); // أزرار العودة
+
+    // إخفاء جميع الأقسام الخاصة بالمدن في البداية
+    cityDetailsSections.forEach(section => {
+        section.style.display = "none";
+    });
+
+    // عند النقر على أي بطاقة مدينة
+    destinationCards.forEach(card => {
+        card.addEventListener("click", function (event) {
+            event.preventDefault();
+            const cityId = card.querySelector("h3").textContent.toLowerCase().replace(/\s+/g, "-") + "-details";
+
+            const cityDetails = document.getElementById(cityId); // الحصول على القسم المناسب
+            
+            if (cityDetails) {
+                nationalSection.style.display = "none"; // إخفاء القسم الوطني
+                internationalSection.style.display = "none"; // إخفاء القسم الدولي
+                servicesSection.style.display = "none"; // إخفاء قسم الخدمات
+                cityDetails.style.display = "block"; // إظهار تفاصيل المدينة المطلوبة
+                window.scrollTo({ top: 0, behavior: "smooth" }); // الانتقال لأعلى الصفحة بسلاسة
+            }
+        });
+    });
+
+    // عند النقر على أي زر "رجوع"
+    backButtons.forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            cityDetailsSections.forEach(section => {
+                section.style.display = "none"; // إخفاء جميع الأقسام
+            });
+            nationalSection.style.display = "block"; // إظهار القسم الوطني
+            internationalSection.style.display = "block"; // إظهار القسم الدولي
+            servicesSection.style.display = "block"; // إظهار قسم الخدمات
+            window.scrollTo({ top: 0, behavior: "smooth" }); // الانتقال لأعلى الصفحة
+        });
+    });
+});
+function showBaridiLink() {
+    const paymentMethod = document.getElementById('payment').value;
+    const baridiLink = document.getElementById('baridi-link');
+    baridiLink.style.display = (paymentMethod === 'baridi') ? 'block' : 'none';
+}
+    </script>
+
+    
+</body>
+</html>

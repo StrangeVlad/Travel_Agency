@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Skylink Travel est une Agence de Voyage Oran Algérie. Skylink  vous Offre des voyages organisés a la carte, réservations d’hôtels dans le monde entier,  visite guidées,  transferts aéroport Hôtels, voyages d’affaires,  Assistance pour demande visa chine, Espagne, France, Turquie…"
+    />
+    <title>Agence De Voyage</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f4f4f4;
+      }
+      .hero {
+        position: relative; /* Important for positioning the bus */
+        overflow: hidden; /* Hides the bus when it's off-screen */
+      }
+      .welcome-text-container {
+        position: absolute;
+        top: 10%; /* Adjusted top value */
+        left: 0;
+        right: 0;
+        font-style: italic; /* Italic text */
+        text-align: center; /* Force centering */
+        font-size: 30px;
+        color: #082646; /* Or a contrasting color for testing */
+        z-index: 1; /* Ensure it's on top */
+        white-space: nowrap; /* Prevent text from wrapping */
+        overflow: hidden; /* Clip overflowing text */
+        padding: 0 10px; /* Add some padding */
+
+        animation: moveText 10s linear infinite;
+      }
+      @keyframes moveText {
+        0% {
+          transform: translateX(-100%); /* Start off-screen left */
+        }
+        100% {
+          transform: translateX(100%); /* End off-screen right */
+        }
+      }
+
+      .voyage-organises {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #f9f9f9;
+      }
+
+      .voyage-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 20px;
+      }
+
+      .slider {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .slider a {
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+
+      .slider a:hover {
+        transform: scale(1.05);
+      }
+
+      .slider-image {
+        width: 250px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .stylish-text {
+        font-family: "Georgia", serif; /* Elegant font */
+        font-style: italic; /* Italic text */
+        font-size: 20px; /* Adjust text size */
+        color: #4a4a4a; /* Dark gray color */
+        text-align: center; /* Center the text */
+        line-height: 1.6; /* Improve readability */
+        max-width: 800px; /* Limit width */
+        margin: 20px auto; /* Center on the page */
+      }
+      .stylish-text strong {
+        font-weight: bold; /* Make bold words stand out */
+      }
+      .stylish-text em {
+        font-style: italic; /* Emphasize italic words */
+      }
+      /* Mobile menu icon */
+      .menu-icon {
+        display: none;
+        font-size: 40px;
+        color: white;
+        cursor: pointer;
+        position: fixed; /* Fixed position to stay on screen */
+        top: 50px; /* Adjust top position */
+        right: 20px; /* Move it to the right */
+        z-index: 1000; /* Ensures it's above other content */
+      }
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .menu-icon {
+          display: block; /* Show only on small screens */
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 60px;
+          right: 0; /* Align to the right */
+          background: #c9bfbf;
+          width: 40%; /* Adjust width for mobile */
+          text-align: center;
+          padding: 10px 0;
+          box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3);
+          z-index: 1000;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+      }
+      /* Main section styling for Services and Destinations */
+      .services,
+      .destinations {
+        text-align: center;
+        padding: 50px 20px;
+      }
+
+      /* Title styling */
+      .services h2,
+      .destinations h2 {
+        font-size: 32px;
+        color: #082646;
+        margin-bottom: 20px;
+      }
+      /* Grid layout for cards (responsive columns) */
+      .service-container,
+      .destination-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: auto;
+      }
+      /* Individual card design */
+      .service-card,
+      .destination-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        cursor: pointer;
+      }
+      /* Hover effect on cards (lift up) */
+      .service-card:hover,
+      .destination-card:hover {
+        transform: translateY(-10px);
+      }
+      /* Image styling inside cards */
+      .service-card img,
+      .destination-card img {
+        width: 50%;
+        height: 70px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      /* Heading styling inside cards */
+      .service-card h3,
+      .destination-card h3 {
+        font-size: 20px;
+        margin-top: 15px;
+        color: #0056b3;
+      }
+      /* Paragraph/text styling inside cards */
+      .service-card p,
+      .destination-card p {
+        font-size: 16px;
+        color: #333;
+        margin: 10px 0;
+      }
+      /* "Learn more" button styling */
+      .service-card .btn,
+      .destination-card .btn {
+        display: inline-block;
+        text-decoration: none;
+        background: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: 0.3s;
+      }
+      /* Hover effect for buttons */
+      .service-card .btn:hover,
+      .destination-card .btn:hover {
+        background: #0056b3;
+      }
+
+      /* Optional 'See More' button styling */
+      .more-btn {
+        display: block;
+        margin: 20px auto;
+        font-size: 18px;
+        color: #007bff;
+        text-decoration: underline;
+        cursor: pointer;
+        text-align: center;
+      }
+      /* Dropdown container styling */
+      .dropdown {
+        position: relative;
+      }
+      /* Base dropdown menu styling */
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        min-width: 160px;
+        z-index: 1000;
+        border-radius: 6px;
+      }
+      /* Remove bullets from list items */
+      .dropdown-menu li {
+        list-style: none;
+      }
+      /* Styling individual links inside the dropdown */
+      .dropdown-menu li a {
+        display: block; /* Full-width clickable area */
+        padding: 6px 12px; /* Inner spacing */
+        color: #333; /* Text color */
+        font-size: 13px; /* Smaller font size */
+        text-decoration: none; /* Remove underline */
+        transition: background-color 0.3s ease; /* Smooth hover effect */
+        white-space: nowrap; /* Prevents text from wrapping */
+      }
+      /* Hover effect for dropdown links */
+      .dropdown-menu li a:hover {
+        background-color: #f0f0f0;
+      }
+      /* Show dropdown menu when hovering over parent */
+      .dropdown:hover .dropdown-menu {
+        display: block; /* Make the menu visible on hover */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="logo">
+      <img src="Photo/logo.png.jpg" alt="Logo" />
+    </div>
+    <nav class="navbar">
+      <i class="bx bx-menu menu-icon"></i>
+      <!-- Make sure this exists -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="agence.html" id="nav-home">Home</a></li>
+        <li class="dropdown">
+          <a href="services.html" id="nav-services">Services</a>
+          <ul class="dropdown-menu">
+            <li><a href="services.html#flight-modal">Flight Booking</a></li>
+            <li><a href="services.html#hotel-modal">Hotel Reservations</a></li>
+            <li>
+              <a href="services.htmlservices.html#guided-modal">Guided Tours</a>
+            </li>
+            <li>
+              <a href="services.html#transport-modal">Transport Services</a>
+            </li>
+            <li><a href="services.html#food-modal">Food & Drinks</a></li>
+            <li><a href="services.html#fastest-modal">Fastest Travel</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html" id="nav-about">About Us</a></li>
+        <li><a href="register.html" id="nav-contact">Contact</a></li>
+        <li class="dropdown">
+          <a href="#" id="nav-explore">Explore</a>
+          <ul class="dropdown-menu">
+            <li><a href="destination.html">Destinations</a></li>
+            <li><a href="VOYAGE-ORGANIES.HTML">Voyage Organies</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <section id="home" class="hero">
+      <!-- Welcome Text Animation Container -->
+      <div class="welcome-text-container">
+        Welcome to Our Agency "SKYLINE" - Organize Your Voyage..!
+      </div>
+
+      <div class="hero-section">
+        <h1 id="hero-title">Explore The World With Us</h1>
+        <p id="hero-text">
+          Discover amazing national and international destinations at unbeatable
+          prices.
+        </p>
+        <a href="destination.php" class="btn-reserve"
+          ><span></span> <span id="hero-button">Reserve Now</span></a
+        >
+      </div>
+    </section>
+
+    <section
+      class="feedback-section"
+      style="padding: 40px 20px; text-align: center"
+    >
+      <h2>Give Us Your Feedback</h2>
+      <form
+        action="submit_feedback.php"
+        method="POST"
+        style="max-width: 600px; margin: auto"
+      >
+        <textarea
+          name="feedback_text"
+          rows="5"
+          required
+          placeholder="Share your thoughts..."
+          style="width: 100%; padding: 10px; font-size: 16px"
+        ></textarea>
+        <br /><br />
+        <label for="rating">Rate Us:</label><br />
+        <select name="rating" id="rating" style="padding: 8px; font-size: 16px">
+          <option value="">Select Rating</option>
+          <option value="5">★★★★★ - Excellent</option>
+          <option value="4">★★★★☆ - Good</option>
+          <option value="3">★★★☆☆ - Average</option>
+          <option value="2">★★☆☆☆ - Poor</option>
+          <option value="1">★☆☆☆☆ - Bad</option>
+        </select>
+        <br /><br />
+        <button
+          type="submit"
+          style="
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+          "
+        >
+          Submit Feedback
+        </button>
+      </form>
+    </section>
+
+    <section class="about">
+      <p class="stylish-text">
+        <strong>Skyline Travel</strong> is more than just a travel agency – it's
+        your gateway to unforgettable experiences. Based in
+        <strong>Mascara</strong>, <strong>Algeria</strong>, we put our expertise
+        at your service to turn every trip into an extraordinary adventure.
+        Whether you dream of a tailor-made journey, worldwide hotel bookings,
+        enriching guided tours, or reliable airport transfers, we are here to
+        assist you. We also facilitate business travel and provide support for
+        administrative procedures, ensuring a stress-free trip. With
+        <strong>Skyline Travel</strong>, every destination becomes a discovery,
+        and every journey a unique experience.
+      </p>
+    </section>
+
+    <section class="voyage-organises">
+      <h2 class="voyage-title">Voyages Organises</h2>
+      <div class="slider">
+        <a href="VOYAGE-ORGANIES.HTML">
+          <img
+            src="Photo/Instabul Turkey Travel Print.jpg"
+            class="slider-image active"
+            alt="Travel Slide 1"
+          />
+        </a>
+        <a href="VOYAGE-ORGANIES.HTML">
+          <img
+            src="Photo/paris.jpg"
+            class="slider-image"
+            alt="Travel Slide 2"
+          />
+        </a>
+        <a href="VOYAGE-ORGANIES.HTML">
+          <img
+            src="Photo/Barcelone.jpg"
+            class="slider-image"
+            alt="Travel Slide 3"
+          />
+        </a>
+      </div>
+    </section>
+    <section class="services">
+      <section class="services">
+        <h2>Our Services</h2>
+        <div class="service-container">
+          <div class="service-card">
+            <img src="Photo/Tour Vacation with Guide.jpg" alt="Guided Tours" />
+            <h3>Guided Tours</h3>
+            <p>
+              Discover the most beautiful destinations with a professional
+              guide.
+            </p>
+          </div>
+          <div class="service-card">
+            <img
+              src="Photo/80fdfe5d-0807-435c-b083-1633b41a5ea3.jpg"
+              alt="Transport Services"
+            />
+            <h3>Transport Services</h3>
+            <p>Book reliable local and international transport services.</p>
+          </div>
+
+          <div class="service-card hidden">
+            <img src="Photo/food.jpg" alt="Food & Drinks" />
+            <h3>Food & Drinks</h3>
+            <p>Enjoy the best local and international dishes.</p>
+          </div>
+        </div>
+        <span class="more-btn" onclick="window.location.href='services.html'"
+          >More...</span
+        >
+      </section>
+
+      <section class="destinations">
+        <h2>Our Destinations</h2>
+        <div class="destination-container">
+          <div class="destination-card">
+            <img src="Photo/Algeria 🇩🇿_الجزائر.jpg" alt="Algiers" />
+            <h3>Algiers</h3>
+            <p>
+              The capital of Algeria with its rich history and vibrant culture.
+            </p>
+          </div>
+
+          <div class="destination-card hidden">
+            <img src="Photo/annaba.jpg" alt="Annaba" />
+            <h3>Annaba</h3>
+            <p>
+              A city with breathtaking beaches and a deep historical heritage.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <span class="more-btn" onclick="window.location.href='destination.html'"
+        >More...</span
+      >
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p id="footer-text">&copy; 2025 SkyLine. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      let currentIndex = 0;
+      const images = document.querySelectorAll(".slider img");
+
+      function changeImage() {
+        images.forEach((img, index) => {
+          img.classList.remove("active");
+        });
+        images[currentIndex].classList.add("active");
+
+        currentIndex = (currentIndex + 1) % images.length;
+      }
+
+      // Start slider every 3 seconds
+      setInterval(changeImage, 3000);
+
+      // Initialize first image
+      changeImage();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuIcon = document.querySelector(".menu-icon");
+        const navLinks = document.getElementById("nav-links");
+
+        menuIcon.addEventListener("click", function () {
+          navLinks.classList.toggle("active"); // Toggle the active class
+        });
+      });
+    </script>
+  </body>
+</html>

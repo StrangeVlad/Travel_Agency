@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Agence De Voyage</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f4f4f4;
+    }
+  </style>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="Photo/logo.png.jpg" alt="Logo" />
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="agence.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="register-form">
+      <div class="container">
+        <h1>Create Your Account</h1>
+        <form id="registerForm" action="register.php" method="POST">
+          <label for="name">First Name:</label>
+          <input
+            type="text"
+            id="first_name"
+            name="first_name"
+            placeholder="Your First Name"
+            required
+          />
+
+          <label for="surname">Last Name:</label>
+          <input
+            type="text"
+            id="last_name"
+            name="last_name"
+            placeholder="Your Last Name"
+            required
+          />
+
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your Email Address"
+            required
+          />
+
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Create a Password"
+            required
+          />
+
+          <label for="confirm-password">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            placeholder="Confirm Your Password"
+            required
+          />
+
+          <button type="submit">Register</button>
+          <a class="login" href="login.php">Login</a>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 SkyLine. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

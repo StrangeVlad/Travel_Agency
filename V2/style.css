@@ -1,0 +1,332 @@
+/* General Styles (unchanged) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(
+      rgba(236, 220, 235, 0.75),
+      rgba(193, 221, 230, 0.75)
+    ),
+    url("Photo/theworld.png"); /* Correct image path */
+  background-size: cover; /* Make the image cover the entire screen */
+  background-position: center; /* Center the image */
+  background-attachment: fixed; /* Keeps the background fixed during scrolling */
+  background-repeat: no-repeat; /* Prevents repeating the background image */
+  animation: flicker 1.5s infinite alternate;
+  margin: 0;
+  font-family: Arial, sans-serif; /* Ensure consistent text styling */
+  position: relative;
+}
+
+.logo {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo img {
+  width: 100px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #4f10c4;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #82bbe9;
+}
+
+/* Hero and Footer Styles (unchanged) */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+
+  color: white; /* Makes text readable over the image */
+  padding: 100px 20px;
+}
+
+.hero-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  color: #30087a;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  gap: 1.5rem;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-style: italic;
+  font-weight: bold;
+  color: rgb(8, 3, 32);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+.btn-reserve {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-reserve:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.footer {
+  background-color: #82bbe9;
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+/* About Section */
+.about,
+.about-details {
+  padding: 50px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 800px;
+}
+
+.about h2,
+.about-details h1,
+.about-details h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #2a9d8f;
+}
+
+.about p,
+.about-details p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* List Styles */
+.about-details ul {
+  list-style: square;
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.about-details ul li {
+  margin: 10px 0;
+}
+
+/* Contact Form Section */
+.contact-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-form .container {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+}
+
+.contact-form h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #007bff;
+  font-size: 2rem;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-form input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.contact-form input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.contact-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #0056b3;
+}
+/* Contact Form Section */
+.register-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.register-form .container {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+}
+
+.register-form h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #007bff;
+  font-size: 2rem;
+}
+
+.register-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.register-form label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.register-form input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.register-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.register-form button:hover {
+  background-color: #0056b3;
+}
+.login {
+  background-color: #007bff;
+  color: white;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+.login:hover {
+  background-color: #007bff;
+  color: white;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
